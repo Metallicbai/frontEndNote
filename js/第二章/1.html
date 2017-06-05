@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+         *  使用js可以在页面加入script标签，script内可以直接写代码，或者用src引入外部文件。script标签支持async属性表示立即下载脚本，defer属性表示脚本延迟到页面加载完再执行。
+         */
+
+         alert('hello world');  //直接写入script当中
+
+         //script内部的代码会被从上倒下依次执行
+    </script>
+    <!--通过外部引入js-->
+    <script src="1.js">
+        //script有了src属性，在标签中不应该还有其他的代码，应为内部的代码是不会被解析的
+    </script>
+    <!--在解析外部的js文件的时候（包括下载），页面会被暂停渲染，需要等js解析完毕，所以js推荐放到文档的最后面。-->
+    <!--只要script不包含 anync 和 defer ，浏览器会按照从上到下一次解析js，第一个js不解析完成，第二个是不会开始解析的-->
+</body>
+</html>
