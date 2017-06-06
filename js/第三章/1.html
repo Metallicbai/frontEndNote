@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //  1、js是一门区分大小写的语言，abc 跟 ABC 或者 Abc 是三个不同的变量
+
+        //  2、js的变量名、函数名命名规则，第一个字符必须是字母或者下划线_ 以及美元$ 开头，其他的字符可以是字母，数字，下划线和美元符，符合unicode字符都可以，所以中文也是可以的，但不推荐使用。
+
+        //  3、变量名建议采用驼峰式的命名规则，及第一个单词小写，剩下的单词大写，如 helloWorld
+
+        //  js中，双斜杠表示单行注释
+
+        /*
+        *   表示多行注释  
+        */
+
+        //'use strict'    // 使用严格模式   
+        var a = 1;      //语句结尾使用分号，不使用也是可以的，但是不推荐。
+
+        // 关键字跟保留字 ———— 取名尽量跟自带的没关系的就好了，报错再换
+
+        //  变量  用 var 来声明一个变量
+        var a = 1;  //声明了一个变量a，并赋值为1
+        //如果不用 var 声明的变量，这个变量将会变成全局变量，所以不推荐
+        b = 2;  //b 变成了一个全局变量，这样会覆盖掉我们系统中的全局变量，所以不推荐使用
+
+        function foo() {
+            var hi= 1;  //变量在函数内，为局部变量
+            hello = 3   //函数内部不使用 var 则会注册一个全局变量，不过不推荐
+        }
+        foo();
+        //console.log(hi);    //报错，外部访问不到函数内部的变量
+        console.log(hello);   //3   不推荐！！！
+
+        var a1 = 2,a2 = 3,a3 = 4;       //可以在一条语句内声明多个变量，中间用逗号隔开
+        // 严格模式下，不能定义名字叫 eval 或者 arguments 的变量，不然会报错
+    </script>
+</body>
+</html>

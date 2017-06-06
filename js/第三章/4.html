@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Null数据类型也是只有一个值null，从逻辑上看，null表示一个空的指针对象
+        var a = null;
+        console.log(typeof a);      //object
+
+        //null 还于undefined相等，但是只有在两个等号的情况下是这样，所以比较时候最好用到三个等号
+        var b = undefined;
+        console.log(a == b);        //true
+        console.log(a === b);       //false
+    </script>
+</body>
+</html>
