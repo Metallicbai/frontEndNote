@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Boolean类型只有真（true）跟假（false）两个值，一半用来做判断。
+
+        //任何数据都能够用 Boolean() 这个方法转化成布尔值
+        
+        //数字转换成布尔值，任何非零的数值（包括无穷大）都转成 true ，0 和 NaN 转false
+        var a = 1;
+        var b = 0;
+        console.log(Boolean(a));    //true
+        console.log(Boolean(b));    //false
+
+        //字符串转换成布尔值，非空字符串转成true，空字符串转成false
+        var c = '';
+        var d = ' ';
+        var e = 'hello';
+        console.log(Boolean(c));    //false
+        console.log(Boolean(d));    //true
+        console.log(Boolean(e));    //true
+
+        //对象转成布尔值，任何对象转成布尔值都为true，null转成false
+        var f = {};
+        var g = null;
+        console.log(Boolean(f));    //true
+        console.log(Boolean(g));    //false
+
+        //undefined转成布尔值，undefined转成布尔值为false
+        var h = undefined;
+        console.log(Boolean(h));    //false
+
+        //布尔值转成布尔值为它自己本身
+
+
+        //出了上面的显示转换外，在做比较的时候或者用if语句时，系统会自己做隐式的转换
+        if ('hello') {  //'hello这个字符串被隐式转换成布尔值
+            alert(1)
+        }
+    </script>
+</body>
+</html>
