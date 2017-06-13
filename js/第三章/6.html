@@ -35,6 +35,31 @@
 
         //小数的精确度不及整数，在进行0.1+0.2这样运算时会出错
         var num10 = 0.1 + 0.2;  //0.30000000000000004
+
+
+        //数字的取值范围，js中，数字能够使用到的范围是从5e-324到1.7976931348623157e+308
+        var num11 = Number.MAX_VALUE;    //1.7976931348623157e+308  Number.MAX_VALUE表示最大值
+        var num12 = Number.MIN_VALUE;    //5e-324                   Number.MIN_VALUE表示最小值
+
+        //如果数值超过了这个取值范围，就会被转行成 inifinity 和 -inifinity
+        var num13 = num11 + num11;      //inifinity
+        var num14 = num12 * num12;      //0
+        //可以用isFinite()这个方法来判断是不是在取值范围之间
+        console.log(isFinite(num13));   //false
+        console.log(isFinite(1));       //true
+
+        //js中数字还有一个值 NaN ，表示 no a number,这是一个特殊的数值，任何数除以一个不是数字的值都会返回NaN
+        //任何数和NaN进行操作就会返回NaN，并且NaN自己也不等于自己本身。
+        console.log(NaN == NaN);        //false
+
+        //可以用isNaN()这个方法来判断数字是不是NaN，是的话就会返回true
+        //isNaN() 的原理就是会将数字进行 Number() 转换，如果是 NaN 就返回true，是数字就返回false，所以可以用来判断一个数据是不是数字。
+
+        console.log(isNaN(NaN));        //true
+        console.log(isNaN(12));         //false
+        console.log(isNaN('15'));       //false     字符串 '15' 可以被Number() 转换成 15，所以返回false
+
+        // isNaN 对于对象也有效果，首先会调用对象的valueof()这个方法，在判断返回值，看是否能否被转换成数字，如果不行就基于对象的返回值，调用对象的toString()这个方法，再来测试返回值
     </script>
 </body>
 </html>
