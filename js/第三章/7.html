@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //js当中有三种方法来讲不是数字的数据转换成数字，分别是 Number() parseInt() parseFloat()
+
+        //Number() 这个方法，可以将所有的数据类型都转换成数字
+
+        //Number() 如果转换Boolean数据，将会返回 1 或者 0，true返回1，false返回0
+        var num1 = Number(true);        //1
+        var num2 = Number(false);       //0
+
+        //Number() 如果转换Number数据，就会返回传入的数字
+        var num3 = Number(13);          //13
+
+        //Number() 如果转换Null数据，会返回0
+        var num4 = Number(null);        //0
+        
+        //Number() 如果转换Undefined，会返回NaN
+        var num5 = Number(undefined);   //NaN
+
+        //Number() 如果转换字符串，会根据不同的字符串，返回不同的值
+
+        //如果字符串只包含数字，不管正负号，将会按照十进制的方法来对字符串进行转换
+        var num6 = Number('123');       //123
+        //如果字符串包含小数，将会转换成对应的小数，但是小数点只能出现一次
+        var num7 = Number('1.2');       //1.2
+        var num8 = Number('1.2.2');     //NaN
+        //如果字符串以0x开头，将会被当成十六进制处理，会被转换成对应的十进制数字
+        var num8 = Number('0xf');       //15
+        //如果字符串是空或者空格，会返回0
+        var num9 = Number('');          //0
+        var num10 = Number(' ');        //0
+        //除了以上的格式之外，任何字符串都返回NaN
+        var num11 = Number('hello');    //NaN
+
+        //如果 Number() 转换的是对象的话，将会调用valueof()的方法，按照前面的规则转换返回值，如果结果是NaN，将会调用对象的toString()方法，再按照前面的规则来转换，不过转换对象并没有实际的意义，对象本身就能保存任何类型的数据
+
+        //如果转换的字符串包含数字并且前面有多个0，0将会被忽略，转换成相应的数值
+        var num12 = Number('000000012');    //12
+    </script>
+</body>
+</html>
