@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //js当中还有 parseInt() 和 parseFloat() 这两个方法将字符串转成数字
+
+        //这两个方法的规则都是从字符串的第一个非空（空格）字符开始找，如果第一个非空（空格）字符不是正负号或者数字，将会返回NaN，如果是，将会一个一个往下找，直到找到的字符不是数字，parseFloat()会识别第一个小数点后面的数字，而parseInt()不会。
+        var num1 = parseInt('1234hello');       //1234
+        var num2 = parseInt('+123rt');          //123
+        var num3 = parseInt('-1234lkj');        //-1234
+        var num4 = parseInt('1.23opi');         //1
+        var num5 = parseFloat('1.23opt');       //1.23
+        var num6 = parseFloat('1.234.23po');    //1.234
+
+        //如果字符串是以0x开头，会被当成十六进制处理
+        var num7 = parseInt('0xf');             //15
+
+        //parseInt() 还可以提供第二个参数，表示需要解析的进制数
+        var num8 = parseInt('af',16);           //175   十六进制
+        var num9 = parseInt('af');              //NaN
+        var num10 = parseInt('10',2);           //2     二进制
+        var num11 = parseInt('71',8);           //57    八进制
+
+        //parseFloat() 只会解析成十进制，所以没有第二个参数
+    </script>
+</body>
+</html>
