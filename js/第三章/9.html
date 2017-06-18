@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //js中的String数据类型（字符串），是由0个或者多个16位unicode字符组成，它被包裹在一对双引号或者单引号之中，引号必须成对出现
+
+        var str1 = 'hello';     //hello
+
+        //字符字面量，字符串有些特殊字符有特别的意义，比如我们需要在字符串当中输入引号，就需要转译，转译就在引号前面加个\反斜杠。
+        //有些转译的字符有特殊的意思。
+
+        var str2 = '123\n123';      //"123
+                                    //    123"      \n 表示换行
+
+        //字符串一旦创建了是不可以修改的，我们只能够重新给变量赋值一个新的字符串，但是不能够修改它
+        var str3 = 'java';
+        str3 = str3 + 'script';     //javascript        js会在后台新建一个能够容纳10个字符串的新字符串，然后再填充java和 script 两个字符串，最后销毁原来的两个字符串
+
+        //把其他数据类型转换成字符串，第一种方法是toString()，几乎所有的值都有这个方法
+        var age = 11;
+        console.log(age.toString());        //11
+        var found = true;
+        console.log(found.toString());      //true
+
+        //字符川也有这个方法，会返回字符串的一个副本，null和undefined这两个值没有toString()这个方法。
+
+        //toString()可以接收一个参数，表示数字需要转换的进制数。
+        var num = 10;
+        console.log(num.toString());        //10
+        console.log(num.toString(2));       //1010
+        console.log(num.toString(8));       //12
+        console.log(num.toString(10));      //10
+        console.log(num.toString(16));      //a
+
+        //toString() 这个方法每次都会以十进制为基数的。
+
+
+        //在转换字符串的时候还可以用String()这个方法，将所有数据类型转换成字符串，在使用String()这个方法的时候，系统会先判断这个数据有没有toString() 这个方法，有的话调用这个方法，没有的话返回这个数据加上引号（如null返回 ‘null’）。
+
+        //在使用加号操作符的时候也能够进行字符串转换，只有加号两边有一个是字符串，就会被自动转换成字符串
+    </script>   
+</body>
+</html>
