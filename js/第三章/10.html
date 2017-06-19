@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //js当中的对象Object类型，对象是一组数据的集合，里边由键值对组成，key : value,其中，key全部都是字符串。对象可以使用new关键字进行创建，也可以使用字面量的方法创建。
+
+        //创建对象
+        var obj = new Object();     //如果没有传参数的话，后面的括号可以省略，但是不推荐这么写
+        
+        //对象当中具有以下的方法跟属性。
+
+        //constructor   表示创建当前对象的构造函数，前面的例子中的构造函数就是Object
+
+        //hasOwnProperty()      用来检测属性是否是当前对象的属性，而不是在它的原型上，如 obj.hasOwnProperty('name'),传入的参数必须是字符串
+
+        //isPrototypeOf()       用来检测传入的对象是不是当前对象的原型
+
+        //propertyIsEnumerable()    检测给的属性值是否可以使用for in来遍历，传入的参数必须是字符串
+
+        //toLocaleString()      返回对象的字符串表示
+
+        //toString()        返回对象的字符串表示
+
+        //valueOf()         返回对象的字符串、数值、或者布尔值表示，通常于toString()的值一致
+
+        //js中，Object是所有对象的基础，所以所有对象都具备以上的方法跟属性。     宿主对象不继承Object对象
+    </script>
+</body>
+</html>
