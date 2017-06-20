@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //js当中一元操作符由递增操作符和递减操作符
+
+        let a = 29;
+        a++;
+        console.log(a);     //30
+        let b = 29;
+        b--;
+        console.log(b);     //28
+        let c = 29;
+        ++c;
+        console.log(c);     //30
+        let d = 29;
+        --d;
+        console.log(d);     //28
+
+        //递增和递减符号放在前面跟后面的去边是在赋值的时候，放在前面会先自加再赋值，放在后面会先赋值再自加；
+        let e = 29;
+        let f = ++e;
+        console.log(f);     //30
+        let g = 29;
+        let h = g++;
+        console.log(h);     //29
+    </script>
+</body>
+</html>
