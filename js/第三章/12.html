@@ -8,7 +8,27 @@
 </head>
 <body>
     <script>
-        //js中的意愿加减操作符
+        //js中的一元加减操作符，就跟我们的数学一样，前面的加号和减号表示正负数
+
+        var num = 32;
+        num = +32;      //表示32
+        num = -32;      //-32
+        var num2 = -25;
+        num2 = +num2;       //-25       负正得负
+
+        //在对不是数字就行这个操作的时候，会调用Number() 这个方法，在进行计算
+
+        var num3 = true;
+        num3 = -num3;       //-1
+
+
+        //如果操作的是对象，会调用对象的valueOf() 或者toString() 方法，在进行操作
+        var obj = {
+            toString() {
+                return 2;
+            }
+        }
+        obj = -obj;     // -2
     </script>
 </body>
 </html>

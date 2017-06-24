@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //js中的逻辑操作符
+
+        //逻辑非 ! 取反，无论操作的是什么数据类型的，这个操作符都会返回一个布尔值
+        var obj = {};
+        console.log(!obj);          //false
+        console.log(!'');           //true
+        console.log(!'hello');      //false
+        console.log(!0);            //true
+        console.log(!1);            //false
+        console.log(!null);         //true
+        console.log(!NaN);          //true
+        console.log(!undefined);    //true
+
+        //可以用两次 !!  来返回这个数据对应的布尔值，跟直接用Boolean()一样
+        console.log(!!123);         //true
+
+
+        //逻辑与 &&  并且的意思，规则是 左边为真，返回右边的值，左边为假，返回左边的值
+        true && console.log(1);
+        false && console.log(1);    //左边是假，就短路了，不会执行右边的值
+
+        function foo(callback) {
+            console.log(3);
+            callback && callback();     //短路操作，只有传入callback才会执行callback()
+        }
+        foo();
+
+
+        //逻辑或 || 或者的意思，规则是 左边为假返回右边的值，左边为真，返回左边的值
+        false || console.log(1);
+        true || console.log(1);        //左边是真了，所以返回了左边的值，右边的并不会执行
+
+        function bar(num) {
+            num = num || 1;         //如果没有传入参数的话，num的值默认是1
+        }
+
+    </script>
+</body>
+</html>
