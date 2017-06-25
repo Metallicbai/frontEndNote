@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //js中的关系操作符，与我们日常数学中的比大小一样，操作之后会返回一个布尔值
+        // < 小于     > 大于   <= 小于等于     >= 大于等于
+        console.log(1 > 5);     //false
+
+        //如果操作数当中有一个不是数字的话，那会进行数据转换
+        //如果比较的是两个字符串，那么就会对字符串的字符编码进行比较
+        //如果直有一个操作数是数值，那么就会将另一个操作数进行转换
+        //如果操作的是一个对象，将会调用对象的valueOf(),在进行比较，如果没有valueOf(),就会调用toString()来比较
+        //如果比较的是一个布尔值，将布尔值转换成数值再比较
+
+
+        //比较字符串会比较字符串编码
+
+        console.log('23' < '3');        //true
+        //因为2的字符串编码是50，3是51，所以23就比3小
+    </script>
+</body>
+</html>
