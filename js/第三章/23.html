@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //js中的函数可以封装多条语句，从而进行重复调用，是js的一个核心
+
+        function foo(arg,arg1) {
+            //通过function关键字来声明一个函数，后面跟着的是一个函数名
+            //括号内是函数接收的参数
+            console.log(arguments);     //函数内都有一个arguments属性，表示函数内的参数，他是一个类数组
+            return;     //表示函数的返回值，后面可以跟着函数的返回值，也可以不写,不写的话会反悔undefined
+            //console.log(1);     //函数碰见return就会停止执行，所以这条语句时不会执行的
+
+        }
+        foo();      //调用的时候，函数名加括号就能调用
+
+        //arguments的值可以改写，但是严格模式禁用了这个功能
+
+        //js当中函数没有重载的概念，后面写的会覆盖前面的
+        function bar() {
+            console.log(1);
+        }
+        function bar() {
+            console.log(2);
+        }
+        bar();  //2后面的覆盖了前面的函数
+
+        //建议都在严格模式下进行开发
+        'use strict'
+    </script>
+</body>
+</html>
