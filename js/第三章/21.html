@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //循环语句
+
+        // do-while循环
+        do {
+            //循环体
+        } while (false);  //括号内放置条件
+        //do-while循环。至少会被循环一次
+
+        //while循环
+        while (false) {     //括号内放置条件
+            //循环体
+        }
+        //while循环只有当条件成立的话才会执行循环体
+
+
+        //for循环
+        for (var i = 0; i < 10; i++) {
+            //第一个是条件初始化，第二个是条件表达式，第三个是条件变化
+            //for循环会先执行初始化，然后判断条件，条件成立会执行这里边的代码，然后再执行条件变化，条件变化之后如果条件判断还满足的话，就继续循环，否则退出循环
+
+        }
+
+        //在使用循环的时候，首先考虑的是for循环，如果for循环做不到的话，再选的while 或者 do-while循环
+
+        //for-in 语句，一个迭代语句，可以遍历对象的所有属性
+
+        for(var attr in window){
+            //console.log(attr);      //会将window所有的属性打印出来
+        }
+
+
+        //break 和 continue; break会退出当前的循环，continue会退出当前的循环
+        for (var i = 0; i < 10; i++) {
+            if (i === 1) break;
+        }
+        console.log(i);     //1
+
+        for (var i = 0; i < 10; i++) {
+            if (i === 1) continue;
+            console.log(i)
+        }
+        //上面的i打印了9次，当i等于1的时候没有被打印出来
+
+        //label语句，表示一个标签，break和continue可以跳到这个标签    
+    </script>
+</body>
+</html>
