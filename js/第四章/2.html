@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //所有的全局变量在浏览器当中都被当成window对象的属性或方法，在一个执行环境所有的代码执行完毕的时候会被销毁，里面的变量跟函数也随之销毁，全局变量在关闭浏览器的时候销毁
+
+
+        //函数在执行的时候会开辟一个新的作用域（函数执行环境），在函数执行完毕之后，会销毁该环境，并把控制权返还给之前的执行环境
+
+        //js中的作用域链，js在查找一个变量的时候，会先在自己的作用域当中查找，如果没有找到，将会像父级查找，还是没有的话会一层一层往上查找，知道找到顶层对象，还是没有的话就报错
+
+        //子函数可以访问到父级的变量，但是父级时访问不到子函数的变量
+
+        var color = 'red';
+
+        function foo() {
+            var color2 = 'green';
+            color = 'blue';     //根据作用域规则，color会一层一层向上查找，所以这儿会更改全局变量color的值
+        }
+        foo();
+        console.log(color);     //blue
+        //console.log(color2);  //报错，父级访问不到子函数的变量
+
+        //函数的参数被当成变量来对待
+
+        function bar(a,b) {
+            //相当于内部创建了 var a,b两个变量
+            
+        }
+
+
+        //js中用var声明的变量时没有块级作用域的
+
+        if(true){
+            var blue = 'blue';
+        }
+        console.log(blue);      //blue，因为没有块级作用域，所以外部还是能访问到内部的blue变量
+    </script>
+</body>
+</html>

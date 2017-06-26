@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //js的变量分为简单数据类型和引用数据类型，基本数据类型指的是简单数据类型，引用数据类型可以包含多个值构成的对象
+
+        //只能给引用数据类型添加方法跟属性
+
+        //在变量赋值的时候，简单数据类型是复制值
+        var num1 = 5;
+        var num2 = num1;
+        console.log(num2);      //5
+        num2 = 3;
+        console.log(num1);      //5         num1并不会因为num2改变而改变
+
+        //变量所储存的复杂数据类型，其实是存一个指针，该指针指向堆内存中，对象所在地址
+        var obj = {
+            a: 2
+        };
+        var obj2 = obj;
+        console.log(obj2);      //a:2
+        obj2.a = 3;
+        console.log(obj.a);     //3         变量在赋值复杂数据类型的时候，其实复制的是指针，所以obj2的a属性改变，也会造成obj的a属性改变
+
+        //js在传递参数的时候，简单数据类型会直接把值复制给局部变量，而复杂数据类型会把内存的地址复制给局部变量，所以如果在函数内更改了传递进去的复杂数据类型，外部的值也会相应的变化
+        //如果函数内部将变量所引用的地址更改后，将不再关联
+        function add(num) {
+            num += 10;
+            return num; 
+        }
+        let num = 10;
+        var result = add(num);
+        console.log(num);       //10
+        console.log(result);    //20
+
+        //如上所示，简单数据类型复制的是值，所以内部改变了局部变量的值，外部的num并不会被改变
+
+
+        function setName(obj) {
+            obj.name = '小明';
+        }
+        var obj = {};
+        setName(obj);
+        console.log(obj.name);  //小明
+
+        //复杂数据类型在传递的时候是传递一个引用地址，所以函数内部对其属性进行更改，也会影响到外部的变量
+
+        function setNameToo(obj) {
+            obj = {};
+            obj.name = '老王';
+        }
+        var obj2 = {};
+        setNameToo(obj2);
+        console.log(obj2.name);     //undefined
+
+        //由于在函数内部给obj赋值了一个新的内存地址，所以修改了内部obj的属性，并不会影响到外部
+
+
+        //我们可以用typeof来检测一个数据的数据类型，这在检测 Number Undefined String Boolean 时很有用，但是检测 Null的时候回返回object
+
+        //所以js提供的另一个方法用来检测是不是引用数据类型 instanceof ,如果变量时饮用数据类型，他会返回true
+
+        console.log({} instanceof Object);      //true
+        console.log([] instanceof Array);       //true
+        console.log(/a/ instanceof RegExp);     //true
+        console.log(1 instanceof Object);       //false
+        console.log([] instanceof Object);      //true
+        console.log(function foo(){} instanceof Object);    //true
+        //js中所有的引用数据类型都是Object的实例，所以检测数组、对象、函数都会返回true
+    </script>
+</body>
+</html>
