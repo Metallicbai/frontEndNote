@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //js中创建Object类型的对象有两种方法，一种是new 后面跟Object
+        var obj = new Object();     //如果没有参数的话，后面的括号可以省略，但是不推荐
+
+        //另一种是字面量的形式
+        
+        var obj = {};
+
+        //js的对象中，属性名都是字符串，如果属性名不是按照变量的命名规则来的话，就要加上字符串，如果是的话，可以省略字符串
+
+        //通过字面量是不会调用Object构造函数的，我们一般推荐使用对象字面量的方式来声明对象
+
+        //js中访问对象的属性可以用点操作符 . 也可以用中括号来访问
+        var person = {
+            name: '小明'
+        };
+        console.log(person.name);       //小明
+        console.log(person['name']);    //小明
+        
+    </script>
+</body>
+</html>
