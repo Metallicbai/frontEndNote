@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //我们可以通过instanceof来判断一个数据是不是数组
+        let arr = [];
+        console.log(arr instanceof Array);      //true
+
+        //也可以通过Array.isArray()这个方法来判断
+        console.log(Array.isArray(arr));        //true      这个方法需要ie9+
+
+        //没个对象都有toString() toLocaleString() valueOf()方法，数组也有
+        let arr2 = ['blue','red','green']
+        console.log(arr2.toLocaleString());     //blue,red,green
+        console.log(arr2.valueOf());            //["blue", "red", "green"]  返回原来的数值
+        console.log(arr2.toString());           //blue,red,green
+        //toLocaleString()大部分情况与toString()的值一样，不过toLocaleString()是对数组的每一项都执行toLocaleString()，所以如果修改了oLocaleString()，返回的值就不一样
+        let obj = {
+            toLocaleString() {
+                return 1;
+            },
+            toString() {
+                return 2;
+            }
+        }
+        let obj2 = {
+            toLocaleString(){
+                return 3;
+            },
+            toString() {
+                return 3;
+            }
+        }
+        let arr3 = [obj,obj2];
+        console.log(arr3.toLocaleString());     //1,3
+        console.log(arr3.toString())            //2,3
+
+
+
+        //使用push()这个方法，可以像数组尾部添加数据，可以添加任何个数，会依此的添加,它回返回修改后数组的长度，并且原来的数组被改变了
+        let arr4 = ['blue','red','green'];
+        let result1 = arr4.push('black');
+        console.log(arr4);      //["blue", "red", "green", "black"]
+        console.log(result1);   //4
+        
+        //pop()这个方法可以删除数组的最后一项，它会返回被删除的数据，原来的数据被改变了
+        let arr5 = ['blue','red','green'];
+        let result2 = arr5.pop();
+        console.log(arr5);          //["blue", "red"]
+        console.log(result2);       //green
+        
+        //shift()这个方法可以移除数组的第一项，它会返回被移除的数据，原来的数组被改变了
+        let arr6 = ['blue','red','green'];
+        let result3 = arr6.shift();
+        console.log(arr6);      //["red", "green"]
+        console.log(result3);   //blue
+
+        //unshift()这个方法可以在数组前面添加若干个项目,会按照参数的顺序进行排序（参数靠前的数据，下标靠前），它回返回修改后数组的长度，并且原来的数组被改变了
+        let arr7 = ['blue','red','green'];
+        let result4 = arr7.unshift('white','pink');
+        console.log(arr7);      //["white", "pink", "blue", "red", "green"]
+        console.log(result4);   //5
+    </script>
+</body>
+</html>
