@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //js中的数组中每一项可以保存任意类型的数据，数组的大小也是可以动态调整的
+
+        //数组可以通过 new 一个Arrary或者字面量来创建
+
+        let arr = new Array();
+        //可以在括号内穿参数，如果传的是数字，表示数据的长度，如果有逗号相隔，表示数组的项目
+        let arr2 = []
+
+        //注意，数组之间用逗号隔开，最后一个数据的后面不用写逗号
+
+        //数组当中的每个数据都有一个对应的下标，下标从0开始，可以用下标来读取数据
+
+        let arr3 = ['blue','red','green'];
+        console.log(arr3[0]);       //blue
+
+        //数组当中有一个length属性，表示当前数组内数据的个数
+        console.log(arr3.length);   //3
+
+        //数据的length是可以修改的
+        arr3.length = 2;
+        console.log(arr3);          //["blue", "red"]
+
+        //如果设定的长度超过当前长度，多出来的数据会用undefine来填补
+        arr3.length = 5;
+        console.log(arr3);         //["blue", "red", undefined × 3]
+
+        //数组最多可以包含4294967259个数据
+    </script>
+</body>
+</html>
