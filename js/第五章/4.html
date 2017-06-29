@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //js数组定义了5个迭代的方法，他们都接收两个参数，第一个参数是一个函数，表示迭代的函数，第二个参数表示这个函数的作用域
+        let arr = [1,2,3,4,5,6,7,8,9];
+
+        //函数接收三个参数，第一个参数表示数据的值，第二个参数表示当前数据的位置，第三个参数表示数组本身
+
+        //every()这个方法，只要函数对数组中每一项都返回真，就会返回true
+        arr.every(function(val,i,arr) {
+            //console.log(val,i,arr);
+            //console.log(this);      //this根据第二个参数来决定，默认window
+            return true;        //如果其中的一项返回false，就会停止迭代
+        },arr)
+
+        let val1 = arr.every(function(val,i,arr) {
+            return val > 2;
+        })
+        console.log(val1);      //false
+
+        //filter()这个方法会返回函数中为true组成的数组
+        let val2 = arr.filter(function(val,i,arr) {
+            return val > 2;
+        })
+        console.log(val2);      //[3, 4, 5, 6, 7, 8, 9]
+
+        //forEach这个方法会对数组进行遍历，没有返回值
+        let val3 = arr.forEach(function(val,i,arr) {
+            return val;
+        })
+        console.log(val3);      //undefined
+
+        //map()会返回函数的返回值组成的结果
+        let val4 = arr.map(function(val,i,arr) {
+            return val * 2;
+        })
+        console.log(val4);      //[2, 4, 6, 8, 10, 12, 14, 16, 18]
+
+        //some()这个方法跟every()很像，不过它只要有一个返回值为true，就会得true
+        let val5 = arr.some(function(val,i,arr) {
+            return val > 2;
+        })
+        console.log(val5);      //true
+
+
+
+        //数组中可以使用reduce() reduceRight(),迭代数组，然后返回一个最终值，接收两个参数，第一个参数是函数，第二个参数是初始值,两个方法的差别就是一个从左往右，一个从右往左
+        //函数有4个参数，分别是上一个值，当前值，当前项目的索引值，和数组本身
+        let arr2 = [1,2,3,4,5,6,7,8,9];
+        let val6 = arr2.reduce(function(pre,on,i,arr) {
+            return pre + on
+        })
+        console.log(val6)
+
+        //他会从第二个项开始迭代，上一个值就是第一个项目，如果有初始值的话，上一个项目就是初始值，从第一个项目迭代，他会把结果当作下一次迭代的上一项
+
+        
+    </script>   
+</body>
+</html>
