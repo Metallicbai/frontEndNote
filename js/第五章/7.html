@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+         *      js中的函数其实就是对象，每个函数都是Function类型的实例，函数都具有属性跟方法。
+         *      函数名就是指向对象的一个指针。
+         *      函数分为函数声明和函数表达式
+         */
+        //  函数声明
+        function foo() {
+
+        }
+        // 函数表达式
+        var foo2 = function() {
+
+        }
+
+        // js中的函数是没有重载的，后面的函数会覆盖前面的函数
+        function foo3() {
+            console.log(1);
+        }
+        function foo3() {
+            console.log(2)
+        }
+
+        foo3();     //2
+
+        // 函数声明具有函数声明提升，在作用域加载的时候，函数声明会被提升到作用于顶部，从而可以在声明前调用
+        foo4();     //3 函数声明可以在声明前调用
+        function foo4() {
+            console.log(3)
+        }
+
+        // foo5()   报错
+        var foo5 = function() {
+            consoelg.log(3)
+        }
+
+
+        var foo6 = function() {
+            console.log(5);
+        }
+        // 与解析会跳过执行地下代码，foo6将会被上面的函数表达式覆盖
+        function foo6() {
+            console.log(6)
+        }
+
+        foo6();         //5         
+        // 由于函数声明提升是将函数声明整个复制到作用域的头部，所以在函数执行到函数相应的位置的时候，将会跳过执行。
+    </script>
+</body>
+</html>
