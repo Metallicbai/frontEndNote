@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 函数明就是一个变量，可作为值传进另一个函数
+        function foo(name) {
+            return name;
+        }
+        function bar(fun,name) {
+            return fun(name);
+        }
+
+       bar(foo,'hello');        //hello
+
+    // 函数内部属性
+    // arguments是函数内部一个类数组对象，返回这个函数的所有参数，这个对象有callee属性，指向拥有这个arguments的函数
+
+    // 函数内部还有个 this属性，是只读属性，一般谁调用该函数就指向谁。
+    // 可以简单的说指向.前面的对象，全局作用域下指向window。函数内部的函数，this指向window
+
+    function foo2() {
+        'use strict'
+        //console.log(arguments.callee)     报错，严格模式下不能访问arguments.callee
+        // console.log(foo2.caller);        严格模式下禁止访问
+    }
+    foo2();
+
+    // 函数的length属性，表示函数期望接收的参数个数
+    console.log(foo.length);        //1
+    console.log(bar.length);        //2
+
+    // 函数的prototype指向函数的原型
+    // 函数都有两个不是继承过来的属性，call 跟 apply，他们两个的作用都是改变函数内部的this指向
+    
+    // apply接收两个参数，第一个是需要改变的this指向，第二个参数是一个数组，也可以是arguments对象
+    
+    // call也的第一个参数也是函数需要改变的this值，从第二个参数开始后，就是需要真正传递给函数的参数
+
+    // es5当中还有一个bind方法，这个方法会返回一个改变this指向的函数实例
+    var color = 'blue';
+    var o = {color: 'red'};
+    function foo2() {
+        console.log(this.color);
+    }
+    foo2();     // blue
+    var foo3 = foo2.bind(o);
+    foo3();     // red
+
+    // bind跟call apply不同的是，call 跟 apply这两个会立即调用函数，bind会返回一个函数实例
+    </script>
+</body>
+</html>
