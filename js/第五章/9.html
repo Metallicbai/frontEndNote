@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // js当中内置了三个基本包装对象 Boolean String Number,分别对应中数据类型，这三种数据类型都是这三个包装对象的实例
+
+        var str = 'hello world';
+        var str2 = str.substring(2);
+        
+        /*
+         *  上面代码执行到第二部的时候，系统会在后台自动执行以下步骤
+         *      1 创建String实例
+         *      2 在实例上调用指定的方法
+         *      3 销毁这个实例
+         */
+
+         // 使用基本包装类型new出来的实例。typeof检测会返回 object
+         var str3 = new String('hello');
+         console.log(typeof str3);      // object
+
+        //  Object构造函数，会根据传入值得类型返回基本包装类型
+        var str4 = new Object('hello');
+        console.log(str4 instanceof String);    // true
+
+        // 这三种基本包装类型可以不用 new调用，直接传入参数可以将参数转成对应的数据类型，并且转换后的数据类型是对应的数据类型，而不是object
+        var number = '25';
+        number = Number(number);
+        console.log(typeof number);     // number
+        var number2 = new Number(25);
+        console.log(typeof number2);   // object
+    </script>
+</body>
+</html>
