@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Boolean 类型
+        // 一般我们声明布尔值时直接直面量来表示，并不推荐直接 new 来声明
+        let isFalse = new Boolean(false);
+        let result = isFalse && true;
+        console.log(result);        // true
+        // 因为 包装对象 返回的类型都是object，所以对象进行布尔值计算的时候返回的都是true，故result的结果是true
+
+        // 所以 Boolean 最好只当作将数据强制转换成布尔值来使用
+        console.log(Boolean(1));    // true
+
+        // Number 包装对象与 Boolean类似
+
+        // Number 包装对象提供了一个将数字转成字符串的方法  toFixed()
+        let num = 10;
+        console.log(num.toFixed());     // 10
+        console.log(num.toFixed(2));    // 10.00  
+        // 该方法接收一个数字作为参数，表示希望转换的字符串表示几位小数
+        let num2 = 10.005;
+        console.log(num2.toFixed(2));   // 10.01
+        // 它会按照穿紧的参数自动四舍五入数字
+
+        // 标准中 toFixed 只接收0 到20 之间的数值
+
+        // toExponential()  返回数字的指数表示法
+        let num3 = 10;
+        console.log(num3.toExponential());      // 1e+1
+
+        // toPricision() 接收一个参数，它会根据数值返回合适的值
+        console.log(num3.toPrecision(1));       // 1e+1
+        console.log(num3.toPrecision(2));       // 10
+        console.log(num3.toPrecision(4));       // 10.00
+
+        // 会根据数值来决定是指数形式还是小数形式
+
+        // 不推荐new一个Number实例来创建数字，同Boolean
+        let num4 = new Number(10);
+        let num5 = 10;
+        console.log(num4 == num5);              // true
+        console.log(num4 === num5);             // false
+        console.log(typeof num4);               // object
+        console.log(typeof num5);               // number
+        console.log(num4 instanceof Number);    // true
+        console.log(num5 instanceof Number);    // false
+        
+        
+    </script>
+</body>
+</html>
