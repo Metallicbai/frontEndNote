@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // String 类型
+
+        // String 类型的 valueof() toString() toLocaleString() 都返回自身的值
+        var a = '11';
+        console.log(a.toLocaleString() === a.valueOf() && a.toLocaleString() === a.toString());     // true
+
+        // 字符串都有length 属性表示字符串的长度
+        let str = 'hello world';
+        console.log(str.length);        // 11
+
+        // 字符串的方法
+        // charAt() 跟 charCodeAt() 都是查找字符串的指定位置，不同的地方是前者返回该位置字符串的值，后者返回字符串的字符编码
+        let str2 = 'hello world';
+        console.log(str2.charAt(1));        // e
+        console.log(str2.charCodeAt(1));    // 101
+        // 也可以通过字符串的下标来访问字符串
+        console.log(str2[1]);               // e
+
+        // 字符串可以通过 concat() 方法来拼接字符，该方法可以接收多个参数
+        let str3 = str2.concat(',','nice ','to ','meet ','you.');
+        console.log(str3);                  // hello world,nice to meet you.
+        // 不过一般都用 + 号进行字符串拼接
+    </script>
+</body>
+</html>
