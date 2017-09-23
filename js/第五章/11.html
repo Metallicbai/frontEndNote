@@ -30,6 +30,55 @@
         let str3 = str2.concat(',','nice ','to ','meet ','you.');
         console.log(str3);                  // hello world,nice to meet you.
         // 不过一般都用 + 号进行字符串拼接
+        // slice() subtring() substr() 都是用来截取字符串的，可以接收一个或者两个参数,第一个参数表示开始的位置。slice() subtring()第二个参数表示结束的位置，但并不过它；substr()第二个参数表示截取的个数
+        // 如果只传一个参数，表示从开始位置指导末尾
+        let str4 = str2.slice(1)
+        console.log(str4);                  // ello world
+        let str5 = str2.substr(1);          
+        console.log(str5);                  // ello world
+        let str6 = str2.substring(1);          
+        console.log(str6);                  // ello world
+
+        // 在对待参数是负数的时候， slice() 会将传进的负数加上当前字符串的长度
+        let str7 = str2.slice(-1);
+        console.log(str7);                  // d
+        let str8 = str2.slice(-1,-3);
+        console.log(str8);                  // 返回空 ,由于第二个参数加上负数比第一个参数小，所以没有截取到字符串
+
+        // substr() 会将第一个负数加上当前字符串长度，第二个负数转换为0
+        let str9 = str2.substr(-1);
+        console.log(str9);                  // d
+        let str10 = str2.substr(-1,-2);
+        console.log(str10);                 // 空字符串
+
+        // substring()会将所有的负数转换为0
+        let str11 = str2.substring(-1);
+        console.log(str11);                 // hello world
+        let str12 = str2.substring(3,-5);
+        console.log(str12);                 // hel
+
+        // substring() 会将负数的参数转换为0，并且第二个参数如果小于第一个参数的时候，会自动将第二个参数设置为开始位置
+
+
+        // indexOf() 跟 lastIndexOf() 都是用来查找字符串中某个子字符串的位置，然后返回子字符串的位置，没有找到返回 -1
+        let str13 = str2.indexOf('lo');
+        console.log(str13);                 // 3    
+        // indexOf() 从字符串左边开始查找，找到第一个匹配的字符串就返回该字符串出现的位置
+        let str14 = str2.lastIndexOf('l');
+        console.log(str14);                 // 9
+        // lastIndexOf() 会从字符串右边开始找，知道找到匹配的第一个子字符串，并返回字符串的实际下标
+
+        // indexOf() 跟 lastIndexOf() 都是可以接收第二个参数的，第二个参数表示从哪里找。 indexOf()会从第二个参数后面的字符串开始找，忽略之前的， lastIndexOf() 会从第二个参数开始找，忽略之后的
+        let str15 = str2.indexOf('o',5);    
+        console.log(str15);                 // 7 忽略了下标5之前的字符串
+        let str16 = str2.lastIndexOf('l',3);
+        console.log(str16);                 // 3 忽略了下标3之后的字符串
+
+        // trim() 可以去除字符串的首尾空格
+        let trimStr = '     hello world     ';
+        console.log(trimStr.trim());        // hello world
+
+
     </script>
 </body>
 </html>
