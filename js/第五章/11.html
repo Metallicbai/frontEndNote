@@ -78,7 +78,14 @@
         let trimStr = '     hello world     ';
         console.log(trimStr.trim());        // hello world
 
-
+        // 字符串大小写转换
+        // toLowerCase() toLocaleLowerCase() 将字符串转换成小写
+        // toUpperCase() toLocaleUpperCase() 将字符串转换成大写
+        console.log(str2.toLocaleLowerCase());  // hello world
+        console.log(str2.toLowerCase());        // hello world
+        console.log(str2.toLocaleUpperCase());  // HELLO WORLD
+        console.log(str2.toUpperCase());        // HELLO WORLD
+        // 其中 toLocaleLowerCase 跟 toLocaleUpperCase() 针对特定地区的语言来使用，如土耳其语。一般如果不知道代码将会在什么语言环境下使用，建议使用针对特定地区的
     </script>
 </body>
 </html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Math 对象
+        // 高程P134 Math的特殊值
+        console.log(Math.PI);       // 3.141592653589793        圆周率
+
+        // max() 跟 min()接收若干个参数，并返回他们的最大值跟最小值
+        let arr = [12,3,5,99,5,0,341];
+        console.log(Math.max(...arr));      // 341
+        console.log(Math.min(...arr));      // 0
+
+        // Math.ceil() 可以将数字向上取整
+        console.log(Math.ceil(3.14));       // 4
+
+        // Math.floor() 可以将数字向下取整
+        console.log(Math.floor(3.14));      // 3
+
+        // Math.round() 可以将数字四舍五入到整数
+        console.log(Math.round(3.14));      // 3
+        console.log(Math.round(3.54));      // 4
+
+        // Matj.random() 会返回一个大于或者等于0并且小于1的随机数，可以根据公式来获取想要的随机数
+
+        // 更多的方法在高程P136
+    </script>
+</body>
+</html>

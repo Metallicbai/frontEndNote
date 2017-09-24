@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Global 对象，全局对象
+        // 不属于任何对象的属性跟方法，都是globa 对象的
+        // encodeURI() 跟 encodeURIComponent() 都是对URI进行编码的
+        let href = location.href;
+        console.log(encodeURI(href));                // file:///D:/myProject/frontEndNote/js/%25E7%25AC%25AC%25E4%25BA%2594%25E7%25AB%25A0/13.html
+        console.log(encodeURIComponent(href));       // file%3A%2F%2F%2FD%3A%2FmyProject%2FfrontEndNote%2Fjs%2F%25E7%25AC%25AC%25E4%25BA%2594%25E7%25AB%25A0%2F13.html
+        // encodeURI() 只会对不符合地址栏规则的进行编码，encodeURIComponent()则会对全部不符合规则的字符串进行编码
+        // decodeURI() 跟 decodeURIComponent() 是相对应的解码方式，decodeURI()只会解由encodeURI()变成的码
+
+        // eval() 会将穿进去的字符串当成js代码来执行，同时eval() 拥有当前的作用域，可以访问到当前作用域的变量或者方法
+        // 非严格模式下，eval()创建的变量跟函数，外部可以访问到
+        // eval() 不存在变量跟函数提升
+        eval('console.log(123)');           // 123
+
+        // Global 对象是最顶成的对象，NaN undefine 等等都是他的属性，所有的原生引用对象也都是它的属性
+        // js 禁止给 NaN undefine Infinity 赋值
+
+        // Global 会跟据宿主对象不同而不同，浏览器中，window对象就是全局的都系昂，所有的全局变量跟方法都是window下的方法或者属性
+    </script>
+</body>
+</html>

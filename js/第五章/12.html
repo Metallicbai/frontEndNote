@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 字符串的匹配方法，配合正则使用
+        // match() 接收一个正则或字符串，返回匹配到的字符串，他是一个数组
+        let str = 'hello world';
+        console.log(str.match(/o/g));   // ["o", "o"]
+        console.log(str.match('l'));    // ["l", index: 2, input: "hello world"]
+
+        // search() 方法接收的参数跟match() 方法相同，它会返回匹配到字符串的下标，没有匹配到的话返回 -1
+        console.log(str.search(/l/g));  // 2
+        console.log(str.search(/a/));   // -1
+
+        // replace() 可以替换匹配到的字符串,它接收两个参数，第一个参数是字符串或者正则，第二个参数接收一个字符串或者函数，表示要替换的字符
+        console.log(str.replace(/o/,'a'));  // hella world
+
+        // split() 可以将字符串转换成数组，接收一个或者两个参数,第一个参数表示需要用到的匹配项，第二个表示数组的个数
+        let str2 = 'yellow,blue,red,green';
+        console.log(str2.split(','));       // ["yellow", "blue", "red", "green"]
+        console.log(str2.split(',',2));     // ["yellow", "blue"]
+
+        // localeCompare() 会比较两个字符串，如果字符串在参数的前面，会返回-1，相等会返回0，在参数的后面返回1
+        console.log(str.localeCompare('a'));              // 1
+        console.log(str.localeCompare('z'));              // -1
+        console.log(str.localeCompare('hello world'));    // 0
+
+        // String 对象有一个静态方法，fromCharCode() ,会根据传进的字符串编码返回字符串，与charCodeAt()相反
+
+        // HTML 方法，高程P31页
+        document.write(str.link('https://www.baidu.com'));      // 会生成 <a href="https://www.baidu.com">hello world</a>
+    </script>
+</body>
+</html>
