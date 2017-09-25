@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 可以通过 OBject.defineProperties() 来定义多个属性
+        // 这个方法接收两个参数,第一个参数是要修改或者添加属性的对象,第二个参数配置对象
+        var book = {};
+        Object.defineProperties(book,{
+            _page: {
+                writable: true,
+                value: 1000
+            },
+            page: {
+                get() {
+                    return this._page;
+                },
+                set(val) {
+                    this._page = val;
+                }
+            }
+        })
+
+        // 可以通过 Object.getOwnPropertyDescriptor() 来读取对象属性的特性,这个方法接收两个参数,第一个参数表示要读取的对象,第二个参数表示读取的属性,这个方法,返回一个对象,对象包含属性的特性
+        var descript = Object.getOwnPropertyDescriptor(book,'page');
+        console.dir(descript.value);
+        
+        // js中可以对任何对象使用 Object.getOwnPropertyDescriptor() ,包括 BOM 跟 DOM 对象
+    </script>
+</body>
+</html>

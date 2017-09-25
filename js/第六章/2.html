@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 访问器属性
+        // 访问器属性不包含数据值，包含一对 setter 跟 getter 函数，这两个函数不是必须的
+        // 访问器属性特性
+        // [[Configurable]] 表示属性能都delete删除 能否修改属性的特性 或者把属性修改成数据属性，特性默认值为 true
+        // [[Enumerable]] 表示这个属性能否被 for-in 枚举出来, 默认值 true
+        // [[Get]] 读取属性时调用的函数，默认值undefined
+        // [[set]] 写入属性时调用的函数，默认值undefined
+        
+        // 访问器属性不能直接定义，必须通过 Object.defineProperty() 来定义
+        var obj = {
+            _year: 2017,
+            age: 0
+        }
+        Object.defineProperty(obj,'year', {
+            get() {
+                return this._year;
+            },
+            set(val) {
+                this.age = val - this._year;
+                this._year = val;
+            }
+        })
+        console.log(obj.year);      // 2017
+        console.log(obj.age);       // 2017
+        obj.year = 2020;
+        console.log(obj.year);      // 2020
+        console.log(obj.age);       // 3
+        // setter属性通过计算来设置函数的手续ing，因此修改了year属性的值，会导致_year 属性一起变动，vue框架就是使用这个原理
+
+        // getter 跟 setter 不一定需要同时设置,只设置 getter的值，意味着不能写入，写入这个属性会返回 undefined，严格模式下会直接报错
+        // 只设置 setter 的属性,不能读取,读取的话会忽略,严格模式下会直接报错
+
+    </script>
+</body>
+</html>

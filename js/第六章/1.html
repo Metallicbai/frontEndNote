@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 对象由大括号内包含多个键值对组成 key: value
+        // 对象所有的 key 都是字符串，value 可以是任意的数据类型
+        var obj = {
+            name: 'xiaoming',
+            sayName: function() {
+                console.log(this.name);
+            }
+        }
+
+        // js中有两种属性类型   [[]]    两个中括号内表示属性内部的特性，不能直接访问
+
+        // 数据属性
+        // [[Configurable]] 表示一个属性能否被 delete 删除 能否修改属性特性 能否把属性设置成访问器属性，默认 true
+        // [[Enumerable]] 表示一个属性能否用 for-in 遍历出来 ，默认为true
+        // [[Writable]] 表示属性是否可以修改
+        // [[Value]] 表示读取属性时的值，默认为 undefined
+
+        var person = {
+            name: 'xiaobai'
+        }
+        // 上面 person 对象的属性 name 在定义的时候， [[Configurable]] [[Enumerable]] [[Writable]] 都被默认设置为 true， [[Value]] 被设置成 xiaobai
+
+        // 我们可以通过 Object.defineProperty() 来设置属性的默认特性,这个方法接收三个参数， 要设置的对象、属性的名字、描述属性特性的对象(描述符对象)
+        // 描述符对象的属性必须时 configurable enumerable writable value
+
+        Object.defineProperty(person,'name',{
+            writable: false,
+            value: 'xiaohong'
+        })
+        console.log(person.name);       // xiaohong
+        person.name = 'hello';
+        console.log(person.name);       // xiaohong
+        // 从上面可以看出，将 对象 person 的 name 属性的 writable 特性设置成 false后，我们就不能对 name 属性的值进行修改了，并且在严格模式下，赋值操作将会抛错
+
+        Object.defineProperty(person,'name',{
+            configurable: false,
+            value: 'xiaobai'
+        })
+        delete person.name
+        console.log(person.name);      // xiaobai
+        // 我们一旦将 configurable 设置成 false，就不能修改或者删除属性了，在严格模式下进行修改和操作将会抛错，并且一旦修改后时不可逆的
+        // 我们将 configurable 设置成 false 之后，除了修改属性的 writable 之外，其他的都会报错，这包括 configurable 本身
+        // 下面的操作会报错
+        // Object.defineProperty(person,'name',{
+        //     configurable: true,
+        //     value: '124'
+        // })
+
+        // 我们用Object.defineProperty() 创建的属性如果没有设置 configurable writable enumerate 的话，默认都是给false 
+        // 如果只是修改已存在的属性的特性时，则可以只修改设定的特性
+        
+    </script>
+</body>
+</html>
