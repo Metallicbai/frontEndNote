@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 构造函数模式
+        function Person(name,age,job) {
+            this.name = name;
+            this.age = age;
+            this.job = job;
+            this.sayName = function() {
+                console.log(this.name);
+            }
+        }
+
+        var xiaoming = new Person('name',12,'student');
+        /*
+         *  构造函数模式与工厂模式不同：
+         *      1.没有显式的创造对象
+         *      2.直接将属性和方法赋值给了this的对象
+         *      3.没有 return语句
+         */
+
+        //  约定熟成，构造函数的开头必须是大写的字母开头
+
+        // 创建一个构造函数的实例，就必须使用 new 操作符
+
+        /*
+         *  new 操作符会执行的步骤
+         *      1.  创建要给对象
+         *      2.  将函数内部的this指向这个对象
+         *      3.  执行函数中的代码
+         *      4.  return 这个对象，即使函数没有 return 语句
+         */
+
+        //  注意，如果函数内部有 return 语句，并且 return 的数据类型不是对象，依然会得到一个对象，如果 return 的数据类型是对象，将会返回这个对象
+        function Foo(name) {
+            this.name = name;
+            return true;
+        }
+        var foo = new Foo('hello');
+        console.log(foo);       // {name: "hello"}
+
+        function Bar(name) {
+            var obj = {
+                age: 18,
+                job: 'student'
+            }
+            this.name = name;
+            return obj;
+        }
+        var bar = new Bar('bai');
+        console.log(bar);       // {age: 18, job: "student"}
+
+        // 实例都存在一个 constructor 属性，这个属性指向实例的构造函数
+        console.log(xiaoming.constructor);
+        /*
+         *  ƒ Person(name,age,job) {
+         *      this.name = name;
+         *      this.age = age;
+         *      this.job = job;
+         *      this.sayName = function() {
+         *        console.log(this.name);
+         *      }
+         *   }
+         *
+         */
+         console.log(xiaoming.constructor === Person);      // true
+
+        //  构造函数 new 出来的对象，是本身构造函数的实例，同时也是Object的实例,因为所有的对象都继承自 Object
+        console.log(xiaoming instanceof Person);            // true
+        console.log(xiaoming instanceof Object);            // true
+        
+        // 构造函数如果不使用 new 操作符，与普通函数没有任何区别
+        // 所以要慎重的将构造函数当成普通函数用，因为构造函数内部的 this 将会绑定在当前作用域指向的 this ，很有可能造成全局变量的污染
+
+        // 构造函数还有一个问题，就是没创建一个实例，将会为实例开辟一块内存，即使实例内部某个常量跟方法相同，仍然会独自占用一块内存
+        var xiaobai = new Person('xiaobai',22,'coder');
+        console.log(xiaobai.sayName === xiaoming.sayName);      // false
+        // 从上面可以看出 两个Person 的实例，相同的方法指向的是不同的内存
+        function sayName() {
+            console.log(this.name);
+        }
+        function Newperson(name,age,job) {
+            this.name = name;
+            this.age = age;
+            this.job = job;
+            this.sayName = sayName;
+        }
+        var xiaohong  = new Newperson('xiaogong',7,'student');
+        var xiaogang = new Newperson('xiaogang',23,'coder');
+        console.log(xiaogang.sayName === xiaohong.sayName);     // true
+
+        // 通过上面的方法倒是可以解决上面提到的问题，但是这样又污染了全局变量，同时让整个函数的封装性不强
+    </script>
+</body>
+</html>
