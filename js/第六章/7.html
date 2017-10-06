@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 通过 in 操作符可以让我们知道一个属性在对象中能否访问
+        function Person() {
+
+        }
+        Person.prototype.name = 'xiaoming';
+        var person = new Person();
+        console.log('name' in person);      // true
+        console.log('age' in person);       // false
+        //  不管这个属性是存在原型还是实例本身上面，只要能访问就会返回 true
+
+        // 使用 for in 循环的时候，会遍历对象所有可以枚举的属性，这包过原型上的属性
+
+        // 通过 Object.keys() 方法可以得到一个对象上面所有可枚举的属性，它会返回一个数组，数组包含对象所有的 key
+        // 属性在数组中出现的顺序，就是 for in 遍历出来的顺序
+        console.log(Object.keys(Person.prototype));     // ["name"]
+
+        // 如果想要得到所有的属性，可以用  Object.getOwnPropertypeNames()
+        console.log(Object.getOwnPropertyNames(Person.prototype))       // ["constructor", "name"]
+
+        // 为了避免每次设置一个属性都要敲一遍 propertype ，我们可以直接给这个属性赋值一个对象
+        Person.prototype = {
+            name: 'xiaoming',
+            age: 18,
+            job: 'student',
+            sayName = function() {
+                console.log(this.name);
+            }
+        }
+
+        // 上面这样写有个例外，Person 的 prototype 的 constructor 不在指向 Person 了，因为每创建一个函数，系统就会自动设置这个函数原型上面的 constructor 
+        // 所以通过字面量创建出来的 prototype 的 constructor 指向就错误了，所以我们需要手动修复
+        Person.prototype = {
+            constructor: Person,
+            name: 'xiaoming',
+            age: 18,
+            job: 'student',
+            sayName = function() {
+                console.log(this.name);
+            }
+        }
+
+        // 但是上面的方法会让 constructor 这个属性可以被遍历出来，所以可以通过 Object.defineProperty()
+        Object.defineProperty(Person.prototype,'constructor',{
+            enumerable: false,
+            value: Person
+        })
+    </script>
+</body>
+</html>
