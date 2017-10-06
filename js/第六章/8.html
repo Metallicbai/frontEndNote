@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //  原型具有动态性，我们在实例之后再往原型链添加方法，依然能够访问到
+        function Person() {
+
+        };
+        var person = new Person();
+        Person.prototype.sayHi = function() {
+            console.log('hi');
+        }
+        person.sayHi();     // hi
+
+        // 但是如果重新给 prototype 重新赋值一个对象，就等于切断了实例与最初原型的联系
+        Person.prototype = {
+            constructor: Person,
+            friends: ['xiaobai','xiaogang'],
+            sayName: function() {
+                console.log('xiaoming');
+            }
+        }
+        // person.sayName();    报错，实例与最初的原型被切断
+        person.sayHi();     // hi
+        // 但是实例依然可以访问到最初的原型上的方法
+
+        // js 中的所有原生对象也是采用原型的方法，我们都可以往原生对象的原型上，添加方法
+        String.prototype.sayName = function(name) {
+            console.log(name);
+        }
+        var str = 'hello world';
+        str.sayName('1');       // 1
+
+        // 原型的方法虽然可以让我们共享对象上面的属性跟方法，节约内存
+        // 但是如果该原型的的实例修改了某个存放指针的属性，其他的实例也会跟着发生变化
+        var person1 = new Person();
+        var person2 = new Person();
+        console.log(person1.friends);      // ["xiaobai", "xiaogang"]
+        console.log(person2.friends);      // ["xiaobai", "xiaogang"]
+        person2.friends.push('xiaohong');
+        console.log(person1.friends);      // ["xiaobai", "xiaogang", "xiaohong"]
+        console.log(person2.friends);      // ["xiaobai", "xiaogang", "xiaohong"]
+
+
+    </script>
+</body>
+</html>
