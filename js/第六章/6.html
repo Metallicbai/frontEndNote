@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 原型模式
+        // 创建的每个函数都有一个prototype 属性 ，这是一个指针，指向一个对象
+        // 原型上面可以存放我们需要共享的属性跟方法
+        function Person() {
+
+        }
+        Person.prototype.name = '小明';
+        Person.prototype.age = 18;
+        Person.prototype.job = 'student';
+        Person.prototype.sayName = function() {
+            console.log(this.name);
+        }
+        var person1 = new Person();
+        var person2 = new Person();
+        person1.sayName();      // 小明
+        person2.sayName();      // 小明
+        console.log(person1.sayName === person2.sayName);       // true
+        // 通过上 prototype ，我们可以让函数的方法跟属性共享，访问 person1.sayName 与 访问 person2.sayName 其实是访问相同的函数，这样就避免实例创建两个函数，节约了内存开支
+
+        // 我们创建一个新函数，系统会根据特定的规则创建该函数的 prototype 属性，这个属性指向函数的原型对象
+        // 默认情况下，原型上系统会自动创建 constructor(构造函数)  属性，这个属性指向 prototype 所在的构造函数
+        console.log(Person.prototype);
+        // 我们创建的实例虽然没有标准访问 prototype ，但是浏览器都在每个对象上支持一个 __proto__ 属性，这个属性指向实例的原型
+
+        // 我们可以通过 isPrototypeOf() 来判断原型跟对象之间是否存在联系
+        console.log(Person.prototype.isPrototypeOf(person1));       // true
+
+        // 通过 Object.getPrototypeOf() 可以得到实例的原型
+        console.log(Object.getPrototypeOf(person1) === Person.prototype);   // true
+
+        // 代码在读取对象的某个属性的时候，我在实例本身上面查找，如果找到了，就返回这个属性。如果没有的话，就会查找这个实例的原型链，如果有的话，就返回该属性。
+        // 原型链上还是没有的话，就会查找原型链的原型链，直到找到顶层对象还是没有找到的话，就会抛出错误。
+
+        // 如果我们在实例上添加一个与原型上同名的属性，js将会就近原则，直接读取实例上的属性，不会沿着原型链去查找
+        person1.name = 'xiaoming';
+        console.log(person1.name);      // xiaoming
+
+        // 可以通过 hasOwnProperty() 来判断一个属性是否是存在在实例当中，而不是从原型继承过来的
+        // 如果是存在实例当中会返回 true 
+        console.log(person1.hasOwnProperty('name'));        // true
+        console.log(person2.hasOwnProperty('name'));        // false
+        
+        // Object.getOwnPropertyDescriptor() 可以返回一个对象身上属性的描述，这个对象必须是实例
+        console.log(Object.getOwnPropertyDescriptor(person1,'name'));
+        
+    </script>
+</body>
+</html>
