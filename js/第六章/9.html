@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 我们通常使用构造函数结合原型模式来创建对象，原型上面放公共的属性跟方法。在构造函数放置私有的属性跟方法
+        function Person(name) {
+            this.name = name;
+            this.friends = ['xiaoming','xiaobai'];
+        }
+        Person.prototype = {
+            constructor: Person,
+            sayName: function() {
+                console.log(this.name);
+            }
+        }
+        var person1 = new Person('damao');
+        var person2 = new Person('xiaohong');
+        person1.friends.push('xiaogang');
+        console.log(person2.friends);       // ["xiaoming", "xiaobai"]
+        person1.sayName();                  // damao
+        person2.sayName();                  // xiaohong
+
+        // 通过上面的方法我们就可以有效的实例属性私有的问题，修改每个实例私有的属性，不会影响其他实例。同时拥有共享的方法，节约了内存的开支
+
+
+
+
+        // 动态原型链模式
+        // 上面的方法构造函数与原型链分开，可能让人觉得封装性不强，所以就可以通过动态原型链的方式来添加原型
+
+        function Person1(name) {
+            this.name = name;
+            if(typeof Person1.sayName !== 'function') {
+                Person1.prototype.sayName = function() {
+                    console.log(this.name);
+                }
+            }
+        }
+
+        // 通过上面的方法，我们在第一次创建实例的时候会检查实例是否存在该方法，如果没有就动态的在原型上添加，并且只要一次添加，其他实例就能立即得到响应
+        // 不用判断每个属性跟方法，只要判断一个将会出现在原型上的方法即可
+        // 注意的是，动态原型链就不能使用字面量的方法批量添加原型了，原因就是之前说过的会切断构造函数与新原型的联系
+        var person3 = new Person1('xiaobai');
+        console.log(person3 instanceof Person1);        // true
+        // 动态原型链模式可以通过 instanceof 来判断对象的类型
+
+
+
+
+        // 寄生构造函数模式
+        function Person2(name) {
+            var o = new Object();
+            o.name = name;
+            o.sayName = function() {
+                console.log(this.name);
+            }
+
+            return o;
+        }
+        var person4 = new Person2('xiaobai');
+        person4.sayName();      // xiaobai
+
+        // 使用 new 操作符，如果函数内有 return 语句，并且返回的是一个对象的话，那就回直接返回这个对象
+        // 寄生构造函数与工厂模式是一摸一样的
+        // 寄生构造函数不能使用 instanceof 来判断类型,因为返回的对象与构造函数或者构造函数的原型属性没有联系
+        console.log(person4 instanceof Person2);        // false
+
+
+
+
+
+        // 稳妥的构造函数模式
+        // 构造函数如果不使用 new 操作符来生成对象也是可以直接调用了，但是这么做很可能直接污染了全局变量，因为 this 指向的问题
+        function Person3(name) {
+            var o = new Object();
+            o.name = name;
+            o.sayName = function() {
+                console.log(name);
+            }
+            return o;
+        }
+        var person5 = Person3('xiaoming');
+        person5.sayName();          // xiaoming
+
+        // 从上面可以看出，稳妥的构造函数模式其实就是一个普通的函数，通过返回一个对象，避免了不适用 new 操作符带来的污染变量
+        // 不过这样与寄生模式一样，不能使用 instanceof 来判断类型
+        console.log(person5 instanceof Person3);        // false
+
+    </script>
+</body>
+</html>

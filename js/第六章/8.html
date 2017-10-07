@@ -18,7 +18,7 @@
         }
         person.sayHi();     // hi
 
-        // 但是如果重新给 prototype 重新赋值一个对象，就等于切断了实例与最初原型的联系
+        // 但是如果重新给 prototype 重新赋值一个对象，就等于切断了实例与新原型的联系
         Person.prototype = {
             constructor: Person,
             friends: ['xiaobai','xiaogang'],
@@ -26,7 +26,7 @@
                 console.log('xiaoming');
             }
         }
-        // person.sayName();    报错，实例与最初的原型被切断
+        // person.sayName();    报错，实例与新原型被切断
         person.sayHi();     // hi
         // 但是实例依然可以访问到最初的原型上的方法
 
