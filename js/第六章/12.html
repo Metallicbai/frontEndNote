@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 借用构造函数
+        // 由于子类在创建实例的时候，无法向超类传递参数，所以就有借用构造函数的技术,通过在子类函数内部调用超类的构造函数，并修改this的指向
+        // call 跟 apply 可以修改函数的 this 指向
+        function Super() {
+            this.colors = ['blue','green','white'];
+        }
+        function Sub() {
+            Super.call(this)
+        }
+        var instance = new Sub();
+        var instance1 = new Sub();
+        instance.colors.push('black');
+        console.log(instance.colors);       // ["blue", "green", "white", "black"]
+        console.log(instance1.colors);      // ["blue", "green", "white"]
+
+        // 通过上面的借调构造函数，我们就让子类的每一个实例都有了一个 colors 的副本，这样就解决了属性共享的问题
+        
+
+        // 通过借调构造函数，还能向超类的构造函数传递参数
+
+        function Parent(name) {
+            this.name = name;
+        }
+        function Child(name) {
+            Parent.call(this,name);
+            this.age = 18;
+        }
+        Child.prototype = new Parent();
+
+        var xiaoming = new Child('xiaoming');
+        console.log(xiaoming.name);     // xiaoming
+        console.log(xiaoming.age);      // 18
+
+        // 但是如果所有的方法都在构造函数内，这样函数复用就成了问题了,所以就有了组合继承模式
+    </script>
+</body>
+</html>
