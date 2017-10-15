@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 组合继承
+        // 指将原型链跟借调构造函数组合在一起,通过原型链对原型的上属性跟方法的继承，通过借调构造函数来对实例的属性方法进行继承
+        function Super() {
+            this.colors = ['blue','green','white'];
+        }
+        Super.prototype.showColors = function() {
+            return console.log(this.colors)
+        }
+        function Sub() {
+            Super.call(this)
+        }
+        Sub.prototype = new Super();
+        var instance = new Sub();
+        instance.showColors();      // ["blue", "green", "white"]
+
+        // 组合继承的方法可以用过 instanceof 跟 isPrototypeOf() 来判断类型之间的关系
+        console.log(instance instanceof Sub);                     // true
+        console.log(Sub.prototype.isPrototypeOf(instance));       // true
+    </script>
+</body>
+</html>
