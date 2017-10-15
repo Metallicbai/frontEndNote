@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 原型式继承
+        // 这个方法可以在原有的对象上创建新的对象
+        function object(o) {
+            function F() {};
+            F.prototype = o;
+            return new F();
+        }
+
+        // 这个调用这个方法生成的对象，都会共享基础对象的属性跟方法
+
+        // ECMAScrupt 5 当中新增 Object.create() 来规范y原型式继承，这个方法接收两个参数，一个当作新对象原型的对象，另一个可选参数，定义新对象额外的属性跟方法
+
+        var person = {
+            name: 'xiaoming',
+            friends: ['xiaohong']
+        }
+        var xiaobai = Object.create(person);
+        xiaobai.name = 'xiaobai';
+        console.log(xiaobai.name)          // xiaobai
+        console.log(xiaobai.friends)       // ["xiaohong"]
+
+        // Object.create 的第二个方法跟 Object.defineProperties() 方法的格式相同
+        // 第二个参数可以穿件新对象的属性跟方法，如果跟基础对象同名，将会覆盖
+
+        var xiaogang = Object.create(person,{
+            name: {
+                value: 'xiaogang'
+            }
+        })
+        console.log(xiaogang.name);        // xiaogang
+
+        // 注意，如果基础的对象上属性是引用类型的，新的对象对其修改，那么基础对象上的这个属性也会变动
+        
+    </script>
+</body>
+</html>
