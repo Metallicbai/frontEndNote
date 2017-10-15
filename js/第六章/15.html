@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 寄生式继承
+        // 寄生式继承与寄生构造函数和工厂模式类似，创建一个用于封装继承过程的函数
+
+        function createNewObj(obj) {
+            var o = Object(obj);
+            o.sayHi = function() {
+                console.log('hi')
+            }
+            return o;
+        };
+        var person = {
+            name: 'xiaoming'
+        }
+        var xiaoming = createNewObj(person);
+        console.log(xiaoming.name);         // xiaoming
+        xiaoming.sayHi();                   // hi
+        // 寄生式继承添加的函数不能够复用，这样会降低效率，这跟构造函数模式类似
+
+        // 由于组合继承模式都会调用两次超类的构造函数，所以就有了计生组合类型的方法来解决这个问题
+        // 其原理就是通过戒掉构造函数来继承构造函数的方法跟属性，通过原型链的混成形式来继承原型链上的方法
+
+        function inherit(subType,superType) {
+            var obj = Object(superType.prototype);
+            obj.constructor = subType;
+            subType.prototype = obj;
+        }
+
+        function SuperType(name) {
+            this.name = name;
+        }
+        SuperType.prototype.sayName = function() {
+            console.log(this.name);
+        }
+        function SubType(name) {
+            SuperType.call(this,name);
+        }
+        inherit(SubType,SuperType);
+        SubType.prototype.sayHi = function() {
+            console.log('hi');
+        }
+
+        var xiaoming = new SubType('xiaoming');
+        console.log(xiaoming.name);     // xiaoming
+        xiaoming.sayName();             // xiaoming
+        xiaoming.sayHi();               // hi
+
+        // 如果是添加在子类 prototype 上的属性跟方法，超类的 prototype 一样会响应
+        console.log(SuperType.prototype.sayHi === SubType.prototype.sayHi);     // true
+
+        // 寄生组合继承可以正常使用 instanceOf 跟 isPrototypeOf()
+    </script>
+</body>
+</html>

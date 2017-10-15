@@ -26,6 +26,8 @@
         // 组合继承的方法可以用过 instanceof 跟 isPrototypeOf() 来判断类型之间的关系
         console.log(instance instanceof Sub);                     // true
         console.log(Sub.prototype.isPrototypeOf(instance));       // true
+
+        // 组合继承无论什么情况下，都会调用两次超类的构造函数，一次在子类原型，一次在子类构造函数内部
     </script>
 </body>
 </html>
