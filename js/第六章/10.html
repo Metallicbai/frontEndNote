@@ -9,6 +9,43 @@
 <body>
     <script>
         // js只支持实现继承，并且继承的方法是通过原型链的模式
+
+        // 我们可以让一个构造函数的原型是另一个构造函数的实例，这个对象的原型就包含指向另一个原型的指针
+
+        function Parent() {
+            this.sex = 'man';
+        }
+        Parent.prototype.saySex = function() {
+            return console.log(this.sex);
+        }
+        function Child() {
+            this.age = 18;
+        }
+        Child.prototype = new Parent();
+        Child.prototype.sayAge = function() {
+            return console.log(this.age);
+        }
+
+        var xiaoming = new Child();
+        xiaoming.saySex();      // man
+        xiaoming.sayAge();      // 18
+
+        console.log(xiaoming.constructor);      // parent       因为 Child 上的原型被重写，这个时候 Child 的原型指向的是 parent ，parent 的 constructor 指向 parent
+
+        // 所有引用的类型默认的都是继承自 Object ，所以这些函数也会自带 toString valueOf 等方法，其实就是调用 Object.prototype 上面的方法
+        console.log(xiaoming.toString());       // [object Object]  toString 这个方法保存在 Object 上面 
+
+        // instanceof 这个操作符，只要原型中出现过构造函数，就会返回 true
+        console.log(xiaoming instanceof Child);      // true
+        console.log(xiaoming instanceof Parent);     // true
+        console.log(xiaoming instanceof Object);     // true
+
+        // 可以说 xiaoming 是 Object Child Parent 这三个类型的实例
+
+        // isProeoeypeOf() 方法同 instanceof  只要是原型链中出现的原型，都可以说是该原型链所派生的实例的原型
+        console.log(Object.prototype.isPrototypeOf(xiaoming));  // true
+        console.log(Parent.prototype.isPrototypeOf(xiaoming));  // true
+        console.log(Child.prototype.isPrototypeOf(xiaoming));   // true
     </script>
 </body>
 </html>
