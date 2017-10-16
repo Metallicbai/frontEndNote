@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 函数表达式
+        // 定义函数有两种方式，一种是函数声明，一种是函数表达式
+
+        // 函数声明
+        function sayName() {
+            // 函数体
+        }
+
+        // 函数有一个非标准的属性 name 可以获得函数的名字，这个值永远是 function 后面的标识符
+        console.log(sayName.name);      // sayName
+
+        // 函数声明有一个特征就是 函数声明提升 ，在作用域开始加载的时候，js引擎会把函数声明的函数整个拷贝到作用域的头部，并且在语句执行到函数声明本来的位置的时候会忽略（因为已经被提升到作用域头部了）
+        // 所以使用函数声明定义的函数，可以在函数声明前面执行函数
+
+        sayHi();            // hi       函数声明使函数被提升了，所以可以在声明前面调用函数
+        function sayHi() {
+            console.log('hi');
+        }
+
+
+
+        // 函数表达式
+        var sayHello = function() {
+            console.log('hello');
+        }
+
+        // 函数表达式就像变量赋值一样，创建一个函数并赋值给 sayHello 
+        // 赋值语句后面的 function 之后并没有跟名字标识符，这种函数叫做匿名函数，匿名函数的 name 是空字符串
+
+        // 函数表达式定义的函数必须先定义才能调用，不存在提升的问题
+        // sayHello1();         报错，不能在定义前就调用
+        var sayHello1 = function() {
+            console.log('hello')
+        }
+
+    </script>
+</body>
+</html>
