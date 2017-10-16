@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 递归函数
+        // 递归函数就是在函数内部会调用自身的一个函数
+
+        function factorial(num) {
+            if (num <= 1) {
+                return 1;
+            } else {
+                return num * factorial(num - 1);
+            }
+        }
+
+        // 上面是一个阶乘的递归函数，但是如果 factorial 被修改了，函数就会出错
+        var newFactorial = factorial;
+        factorial = null;
+        // console.log(newFactorial(4));        报错，因为 factorial 已经被改写了，函数内部调用不到
+
+        // 当然我们可以使用 arguments.callee 来优化这个函数
+        function factorial1(num) {
+            if (num <=1) {
+                return 1;
+            } else {
+                return num * arguments.callee(num - 1);
+            }
+        }
+
+        // 但是，在严格模式下面，我们并不能访问到 arguments.callee 这个属性
+
+
+        // 所以可以通过函数表达式来优化
+
+        var factorial2 = function f(num) {
+            if (num <= 1) {
+                return 1;
+            } else {
+                return num * f(num-1);
+            }
+        }
+
+        // 我们给函数表达式后面创建的函数命一个名字，在函数内部我们依然能够调用得到
+        console.log(factorial2(5));     // 120
+        var factorial3 = factorial2;
+        factorial2 = null;
+        console.log(factorial3(5));     // 120
+    </script>
+</body>
+</html>
