@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 模块模式
+
+
+        // 单例指得是只有一个实例的对象
+        // 对象字面量的方法就是一个单例
+        var obj = {};
+
+        // 我们可以通过单例来创建有私有变量的对象
+
+        var createObj = function(name) {
+            
+            return {
+                getName: function() {
+                    return name;
+                },
+                setName: function(val) {
+                    name = val;
+                }
+            }
+        }
+
+        // 通过上面的函数，我们每次调用都会得到一个单例对象，这样内部变量就不会被其他情况而改变，只能通过单例提供的公有方法来改变
+
+        var obj1 = createObj('xiaoming');
+        var obj2 = createObj('xiaobia');
+        console.log(obj1.getName());     // xiaoming
+        console.log(obj2.getName());     // xiaobia
+
+        // 增强型模块模式
+        // 有时候，我们返回的单例必须是指定的类型,我们就可以这么做
+        var bestModule = function(name) {
+            var obj = new Person(name);
+            obj.getName = function() {
+                return name;
+            }
+            return obj;
+        }
+
+        // 上面的这个例子就增强了 模块模式，让返回的单例指定是 Person 类型的 
+    </script>
+</body>
+</html>
