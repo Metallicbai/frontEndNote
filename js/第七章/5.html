@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 由于匿名函数在非严格模式下，this 指向的是 window，严格模式指向 undefined
+        // 所以就有可能造成闭包函数的内部 this 指向错误
+        var name = 'xiaobai';
+        var obj = {
+            name: 'xiaoming',
+            sayNmae: function() {
+                return function() {
+                    console.log(this.name);
+                }
+            }
+        }
+        obj.sayNmae()();        // xiaobai
+
+        // 函数在被调用的时候，总会获得两个特殊的变量 this 跟 arguments，在搜索这两个变量的时候，只会搜索到活动对象为止，不会沿着作用域网上找，所以上面调用函数 访问的 this.name 其实是访问 window 的 name
+
+        
+        // 所以我们可以在外部先用一个变量保存一下 this 
+        var obj = {
+            name: 'xiaoming',
+            sayNmae: function() {
+                var self = this;
+                return function() {
+                    console.log(self.name);
+                }
+            }
+        }
+        obj.sayNmae()();        // xiaoming
+    </script>
+</body>
+</html>
