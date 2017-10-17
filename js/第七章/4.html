@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 闭包只能获得函数内部这个变量最后的值
+        function getAddNum() {
+            var result = [];
+
+            for (var i = 0; i < 10; i++) {
+                result[i] = function() {
+                    return i;
+                }
+            }
+            return result
+        }
+        var add = getAddNum();
+        console.log(add[0]());      // 10
+        // 上面这样的函数，很容易让人误认为每次调用 add 数组中的函数，将会得到这个函数的索引
+        // 其实并不是这样的，我们在执行 add 当中的函数的时候，都会引用到这个函数上级作用域中的变量 i ，它就会沿着作用域链去找 i 这个变量
+        // 但是当它找到 i 这个变量之后，其实上级函数当中已经执行完循环了，所以得到的是循环后的 i 变量
+
+        // 所以上面函数可以这样优化
+        function newGetAddNum() {
+            var result = [];
+
+            for (var i = 0; i < 10; i++) {
+                result[i] = (function(i) {
+                    return function() {
+                        return i;
+                    }
+                })(i)
+            }
+            return result;
+        }
+
+        // 上面这个函数我们通过将 i 变量传进函数内部，让它成为函数的私有变量，再通过闭包的方式返回一个函数，每次调用这个函数的时候就能得到我们想要的索引值了
+
+
+        // 当然还可以用 es6 当中的 let 语法，可以定义一个具有块级作用域的变量
+
+        function es6GetAddNum() {
+            var result = [];
+            for (let i = 0; i < 10; i++) {
+                result[i] = function() {
+                    return i;
+                }
+            }
+            return result;
+        }
+
+        // let 声明的变量只有在当前的 {} 内有效，外部是访问不到的，所以就能保存每次的索引
+        var newAdd = es6GetAddNum();
+        console.log(newAdd[0]());       // 0
+        console.log(newAdd[5]());       // 5
+    </script>
+</body>
+</html>
