@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // BOM 浏览器对象模型
+        // 浏览器中，window 就是 global 对象，在全局环境下，任何变量跟函数，都是 window 的属性跟方法，它作为最顶层的对象
+
+        // 全局环境下声明的变量跟函数，都是 window 的属性
+        var a = 10;
+        console.log(a === window.a);        // true
+        
+        // 在非严格模式下，匿名函数 this 指向的是window 
+        (function(){
+            console.log(this);      // Window
+        })()
+
+        // 定义的全局变量是不能删除的，但是可以删除 window 身上的属性
+    </script>
+</body>
+</html>
