@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // setTimeout() 可以设置一个延迟执行的定时器，接收两个参数，第一个是要执行的函数，第二个是多少毫秒之后执行
+        setTimeout(function() {
+            console.log(1);
+        },1000)
+        console.log('上面的代码会在这条语句之后执行');
+        // 上面的代码会在这条语句之后执行
+        // 1
+
+
+        // setTimeout() 方法会返回一个数字，表示这个定时器的标记，可以用 clearTimeout() 来清楚这个定时器
+        var timer1 = setTimeout(function() {
+            console.log('定时器被清掉了，我永远不会执行')
+        },1000)
+        clearTimeout(timer1);
+        // 上面就清楚了这个定时器，所以定时器不会被执行
+
+        // setInterval() 可以设定一个定时的定时器，接收两个参数，第一个是要执行的函数，第二个是表示多少毫秒的间隔
+        var n = 0;
+        var timer2 = setInterval(function() {
+            n++;
+            console.log(n);
+            if (n > 10) {
+                clearInterval(timer2);
+            }
+        },100)
+        // 上面的代码表示，每一百毫秒累加一次 n 当，n 大于 10 的时候，清除定时器
+
+
+        // 清除一个不存在的定时器，不会报错，并且 clearTimeout 跟 clearInterval 都可以清除任何类型的定时器
+
+
+        // 由于 js 是单线程的，所以定时器只是在多少毫秒之后将代码加入到当前的任务队列之后，前面的任务不执行完，定时器是不会走的
+
+        for (var i = 0; i < 10; i ++) {
+            setTimeout(function() {
+                console.log(i);
+            },0)
+        }
+        // 上面的代码看似每次都会打印每次的索引，但是并不是这样的，结果是每次都是打印 10
+        // 因为 js 是单线程的，所以定时器是往任务队列后面添加执行代码，所以当执行定时器的代码的时候，前一个循环任务已经执行完毕，所以打印了每次打印的是执行完后的 i 
+
+    </script>
+</body>
+</html>
