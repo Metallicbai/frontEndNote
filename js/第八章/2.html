@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Chrom IE Safari opera 等可以通过 screenLeft 与 screenTop 来获取窗口距离屏幕的距离
+        // Firefox 需要使用 screenX 跟 screenY
+        
+        //从窗口的上边框跟左边框算起 
+        console.log(screenTop);
+        console.log(screenLeft);
+        
+        // moveTo() 可以指定窗口移动到某个坐标
+        window.moveTo(0,0)
+        // moveBy() 可以让窗口在当前位置进行偏移
+        window.moveBy(-50,0)
+        // 不过上面的两个方法，浏览器一般都禁用
+
+
+        // 通过 innerWidth 与 innerHeight 可以获得视口大小
+        console.log(innerWidth,innerHeight)     // 1920 948
+        // 通过 DOM 也可以获取，document.documentElement.clientWidth 与 document.documentElement.clientHeight
+        console.log(document.documentElement.clientWidth,document.documentElement.clientHeight)     // 1920 948
+        // 非标准浏览器需要通过  document.body.clientWidth 与 document.body.clientHeight
+        // 获取的只是body的大小
+        console.log(document.body.clientWidth,document.body.clientHeight)       // 1904 0
+
+
+        // resizeTo() 可以调整窗口到指定大小
+        window.resizeTo(100,100);
+        // resizeBy() 可以调整窗口大小跟穿进去的差值
+        window.resizeBy(100,250)
+        // 不过浏览器一般都是禁用
+        
+
+        // window.open() 可以打开一个窗口，接受4个参数，第一个是要加载的url，第二个是要放置的窗口名称，第三个是特性字符串，第二个是否取代浏览记录
+        window.open('https://baidu.com');       // 打开百度，不过一般浏览器都会拦截
+        // close() 可以关闭我们 open() 打开的窗口
+    </script>
+</body>
+</html>
