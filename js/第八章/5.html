@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // location 对象提供了当前的地址信息
+
+        // window.location 与 document.location 引用的是同一个对象
+
+        // hash 可以得到地址栏#后面（包括#）的字符串,没有就返回空
+        console.log(location.hash)       // #2
+
+        // host 返回服务器名称和多口号
+        console.log(location.host);
+
+        // hostName 返回带端口号的服务器名称
+        console.log(location.hostname);
+
+        // pathName 返回地址栏中目录或者文件名
+        console.log(location.pathname);     // /D:/frontEndNote/js/%E7%AC%AC%E5%85%AB%E7%AB%A0/5.html
+
+        // port 可以返回地址栏中指定的端口号，没有的话返回空
+        console.log(location.port);
+
+        // protocol 可以返回页面使用的协议
+        console.log(location.protocol);     // file:
+
+        // search 返回地址栏 ? 之后的字符串，包括 ?
+        console.log(location.search);
+
+        // 直接修改 location 对象或者 xiugai location.href 的值，都会改变当前的页面
+        // 他们都会自动调用 assign() 方法，修改上面的属性也会达到同样的效果，并且会往历史纪录添加一条新数据
+
+        // reload() 可以让页面从新加载，如果传入一个 true 的话，会强制刷新页面
+        // location.reload(true);
+    </script>
+</body>
+</html>
