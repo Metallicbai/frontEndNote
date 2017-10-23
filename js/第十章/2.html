@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // document 对象，是HTMLDocument (继承自Document类型) 的一个实例，是 window 下的一个属性，可以全局访问,表示着整个 html 页面
+        // nodeType 的值是9
+
+        // 可以通过 documentElement 来访问 html 标签
+        console.log(document.documentElement);
+
+        // body 指向的是 body 标签
+        console.log(document.body)
+
+        // doctype 可以访问 <!DOCTYPE html>
+        console.log(document.doctype) 
+
+        // title 可以获得文档的 title 
+        console.log(document.title)        // Document
+
+        // URL 可以取得页面完整的 URL
+        console.log(document.URL)           // file:///D:/frontEndNote/js/%E7%AC%AC%E5%8D%81%E7%AB%A0/2.html
+
+        // domain 包含页面的域名
+        console.log(document.domain)
+
+        // referrer 保存着链接到当前页面的 url 
+        console.log(document.referrer)
+    </script>
+</body>
+</html>
