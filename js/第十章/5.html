@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box" class="box"></div>
+    <script>
+        // Element 类型
+        // nodeType 值为 1 
+        // nodeName 值为标签名
+
+        // nodeName 与 tagName 值相同,并且全部是大写
+        var box = document.getElementById('box');
+        console.log(box.nodeName);                      // DIV
+        console.log(box.nodeName === box.tagName);      // true
+
+        // 我们可以通过操作对象的方法,访问 html 节点的属性
+        console.log(box.id)     // box
+
+        // class 由于是保留字,所以只能通过 className 来访问
+        console.log(box.className)  // box
+    </script>
+</body>
+</html>
