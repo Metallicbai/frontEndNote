@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // write() 跟 writeIn() 可以向文档中写入字符串
+        
+        // write() 会原封的写入字符串,writeIn()会在末尾添加换行
+
+        document.write(new Date())
+
+        // 网页在渲染完成之后会关闭网页的输出流,如果这个时候再调用 write 或者 writeIn 会覆盖掉文档中内容
+
+        window.onload = function() {    
+            document.write('hello world')       // 覆盖了之前的时间
+
+            // 可以通过 open 来打开文档输出流, close 关闭输出流
+        }
+    </script>
+</body>
+</html>
