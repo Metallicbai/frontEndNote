@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+        // DOM 文档对象模型，是针对 HTML 提供的一套 API ，让我们可以操作文档节点
+
+        // js 中所有的节点类型都继承自 Node 类型
+
+        // 每个节点都有一个 nodeType 属性，总共有12个，来表示不同的节点类型
+
+        // 1 元素节点
+        var box = document.getElementById('box');
+        console.log(box.nodeType)       // 1
+
+        // 元素节点 nodeName 始终保存着标签名,并且时全部大写
+        console.log(box.nodeName);      // DIV
+
+
+        
+        
+        
+        // 节点都有一个 childNodes 属性，保存着 NodeList 一个类数组，保存这它所有的字节点，并且这个类数组时动态的
+        var html = document.querySelector('html');
+        console.log(html.childNodes)
+
+        // 每个节点都有一个 parentNode,指向这个节点的父节点
+        console.log(box.parentNode);        // <body></body>
+
+        // childNodes 中的节点可以通过 previousSibling 访问上一个节点
+        console.log(html.childNodes[1].previousSibling)     // <head></head>
+        // 通过 nextSibling 访问下一个节点
+        console.log(html.childNodes[1].nextSibling)         // <body></body>
+
+        // 如果上一个节点或者下一个节点不存在，返回 null 
+
+
+        // 父节点可以通过 firstChild 来访问第一个子节点
+        console.log(html.firstChild);       // <head></head>
+        // 通过 lastChild 来访问最后一个子节点
+        console.log(html.lastChild)         // <body></body>
+
+        // 如果没有子节点返回 null 
+
+        // hasChildNodes() 可以用来检测有没有子节点
+        console.log(html.hasChildNodes());      // true
+
+
+        // 通过 appendChild() 可以向 childNodes 末尾添加节点
+        html.appendChild(box);
+
+        // 但是如果这个添加的节点同时也是它的子节点，那么就会将这个子节点剪切到最后面
+
+        // insertBefore() 可以在子节点前插入节点，接收两个参数，第一个是要插入的节点，第二个是要在谁前面插入节点
+        // 如果没有第二个参数，将会插入到最后面，如果要插入的节点是它的子节点，那么将会直接剪切这个节点
+        var body = document.querySelector('body');
+        html.insertBefore(box,body);
+
+
+        // replaceChild() 可以替换掉节点,接收两个参数，第一个是要替换的节点，第二个是要被替换的节点
+        // 如果替换节点是它的子节点，那么会直接剪切过去
+        html.replaceChild(body,box);
+
+
+        // removeChild() 可以移除节点，接收一个要被移除的节点作为参数
+        var head = document.getElementsByTagName('head')[0];
+        html.removeChild(head);
+
+        // cloneNode() 可以克隆一个节点，接收一个布尔值作为参数，如果是 true 那就包括子节点， false 的话就只克隆这个节点本身
+        var clone = html.cloneNode();
+        console.log(clone)
+        var clone2 = html.cloneNode(true);
+        console.log(clone2);
+
+    </script>
+</body>
+</html>
