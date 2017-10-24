@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 我们可以通过动态创建 script 元素，然后动态的加载js文件
+        var script = document.createElement('script');
+        script.innerHTML = 'console.log(1)'
+        document.body.appendChild(script);
+
+        // 同样的也可以动态的加载样式
+
+        // DOM 操作表格 ，高程P282
+
+        // NodeList 是动态的，只要结构添加或者修改某个元素，都能个及时的响应
+    </script>
+</body>
+</html>
