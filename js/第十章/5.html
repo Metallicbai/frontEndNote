@@ -23,6 +23,37 @@
 
         // class 由于是保留字,所以只能通过 className 来访问
         console.log(box.className)  // box
+
+        // 可以通过 getAttribute() 获取元素上的属性
+        console.log(box.getAttribute('id'));        // box
+
+        // 属性是部分大小写的，所以ID 跟 id 获得的值是一样的，并且 HTML5 规范中，自定义属性要以 data- 开头
+
+
+        // 通过 setAttribute() 设置元素身上的属性
+        box.setAttribute('data-color','red');
+        console.log(box)
+        // 接收两个参数，第一个是要设置的属性，第二个是值，如果属性存在就覆盖，不存在的话就新增属性,同样是不分大小写，不过在标签上会全部转成小写
+
+
+        // removeAttribute() 可以删除元素身上的属性
+        box.removeAttribute('class');
+        console.log(box)
+
+
+        // Element 类型是唯一使用 attribute 的 DOM 节点类型
+
+        // 元素的 attribute 是一个动态的集合
+
+
+        // getNamedItem() 可以获取属性
+        console.log(box.attributes.getNamedItem('id'));     // id="box"
+
+        // removeNamedItem() 移除属性,返回被删除的属性
+        box.attributes.removeNamedItem('data-color');
+        console.log(box)
+
+        // setNamedItem() 可以设置属性
     </script>
 </body>
 </html>
