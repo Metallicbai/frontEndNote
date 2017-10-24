@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box">
+        <div class="child"></div>
+        <div class="child"></div>
+    </div>
+    <script>
+        // querySelector() 可以根据穿进去的 css 选择器获取元素，如果存在多个，则返回第一个，如果没有的话就返回 null
+        var child = document.querySelector('#box .child');
+        console.log(child);
+
+        // querySelectorAll() 可以根据 css 选择器获取一堆元素,返回的是一个 NodeList 的实例，并且这个实例是静态的
+        var childs = document.querySelectorAll('#box .child');
+        console.log(childs)     // [div.child, div.child]0: div.child1: div.childlength: 2__proto__: NodeList
+        // 没找到返回一个空的类数组
+        console.log(document.querySelectorAll('a'));
+
+
+        // childElementCount 返回子元素的个数，不包含文本个注释
+        var body = document.body;
+        console.log(body.childElementCount)     // 2
+
+        // firstElementChild 返回第一个子元素
+        console.log(body.firstElementChild)
+
+        // lastElementChild 返回最后一个子元素
+        console.log(body.lastElementChild)
+
+        // previousElementSibling 返回前一个兄弟元素,没有返回 null 
+        console.log(child.previousElementSibling)
+
+        // nextElementSibling 返回下一个兄弟节点，没有返回 null
+        console.log(child.nextElementSibling)
+    </script>
+</body>
+</html>
