@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // document.createElement() 可以穿件元素，接收一个元素名作为参数
+
+        var div = document.createElement('div');
+        div.className = 'box';
+        document.body.appendChild(div);
+
+        // childNodes 可以返回元素的子节点，如果我们需要得到子元素节点就需要做一次判断
+
+        var child = document.body.childNodes;
+        var data = [];
+        for (var i = 0; i < child.length; i++) {
+            if (child[i].nodeType === 1) {
+                data.push(child[i])
+            }
+        }
+        console.log(data);                      // [script, div.box]
+
+        // 可以通过非标准的 children  属性来获取子元素节点
+        console.log(document.body.children)     // [script, div.box]
+    </script>
+</body>
+</html>
