@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 文本节点
+        // nodeTYpe 值为 3
+        // nodeName 值为 #text
+        // nodeValue 为文本的值
+        // 没有子节点
+
+        // document.createTextNode() 可以创建文本节点
+        document.body.appendChild(document.createTextNode('hello world'));
+
+
+
+        // Comment 类型 注释
+        // nodeType 值为 8 
+        // nodeValue 为注释内容
+        // nodeName 为 #comment
+
+        // document.createComment() 可以创建注释
+        document.createComment('123')
+    </script>
+</body>
+</html>
