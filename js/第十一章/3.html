@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 文档模式，指定文档以什么方式渲染 -->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box">
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+    </div>
+    <div id="text"><p>hello world</p></div>
+    <script>
+        // children 可以获取所有的子元素
+        var box = document.getElementById('box');
+        console.log(box.children)
+
+        // contains() 可以查看一个元素是不是另一个元素的后代
+        console.log(document.documentElement.contains(box));        // true
+
+
+        // innerText 可以获得元素的文本，或者为元素写入文本
+        var text = document.getElementById('text');
+        console.log(text.innerText)     // hello world
+        text.innerText = '123';
+
+        // outText 获取的值同 innerText，但是如果修改的话，会替换当前的元素
+        text.outerText = '345';
+    </script>
+</body>
+</html>
