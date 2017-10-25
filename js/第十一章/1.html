@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <div id="box">
+    <div id="box" class="a b c">
         <div class="child"></div>
         <div class="child"></div>
     </div>
@@ -38,6 +38,33 @@
 
         // nextElementSibling 返回下一个兄弟节点，没有返回 null
         console.log(child.nextElementSibling)
+
+        // getElementsByClassName() 可以通过元素的类名获取元素，拿到的是一个动态的类数组
+        console.log(document.getElementsByClassName('child'));
+
+        // 可以在一个字符串内传入多个类名，并且排名是不分先后的
+
+
+        // classList 可以操作元素的类
+        var box = document.getElementById('box');
+        console.log(box.classList)      //  ["a", "b", "c", value: "a b c"]
+
+        // add() 可以往元素上面添加类名，如果已经存在，就不会在添加
+        box.classList.add('d');
+        console.log(box.classList)      // ["a", "b", "c", "d", value: "a b c d"]
+
+        // remove() 可以删除元素身上的类
+        box.classList.remove('d');
+        console.log(box.classList)      //  ["a", "b", "c", value: "a b c"]
+
+        // contains() 可以判断元素身上是否存在某个类，如果存在就返回 true 
+        console.log(box.classList.contains('a'));       // true
+
+        // toggle() 可以切换元素身上的类
+        box.classList.toggle('a');
+        console.log(box.classList)      // ["b", "c", value: "b c"]
+        box.classList.toggle('a');
+        console.log(box.classList)      // ["b", "c", "a", value: "b c a"]
     </script>
 </body>
 </html>
