@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button data-color="#333">当前聚焦的按钮</button>
+    <div id="box"></div>
+    <script>
+        // document.activeElement 可以获取当前聚焦的元素
+        var btn = document.querySelector('button');
+        btn.focus();
+        console.log(document.activeElement === btn);        // true
+
+        // hasFocus() 可以判断文档是否获取了焦点
+        console.log(document.hasFocus())        // false
+
+
+        // readyState 可以查看文档是否加载完,有两个值 loading 表示正在加载， complete 表示加载完成
+        console.log(document.readyState)        // loading
+
+        // head 可以获取 head 标签
+        console.log(document.head)
+
+        // charset 可以获取文档的字符集
+        console.log(document.charset)           // UTF-8
+
+        // data- 开头的属性为 HTML5 规定的自定义属性开头
+
+
+        // innerHTML 可以在元素内部填充内容，如果内容包含标签的话，那么浏览器就会解析成真正的 DOM 结构
+        var box = document.getElementById('box');
+        box.innerHTML = '<p>hello world</p>'
+
+        // outerHTML 可以获得元素包含子元素的字符串
+        console.log(box.outerHTML)      // <div id="box"><p>hello world</p></div>
+
+        // insertAdjacentHTML() 可以插入元素
+
+        // 在元素之前插入同级元素
+        box.insertAdjacentHTML('beforebegin','<p>123</p>');
+
+        // 在子元素前面面追加元素，或者添加子元素
+        box.insertAdjacentHTML('afterbegin','<h3>这是一个h3</h3>')
+
+        // 在子元素后面追加元素，或者新增子元素
+        box.insertAdjacentHTML('beforeend','<h4>这是一个h4</h4>')
+
+
+        // 在元素后面追加兄弟元素
+        box.insertAdjacentHTML('afterend','<p>这是box的兄弟元素</p>')
+
+        // 在覆盖用 innerHTML 覆盖元素子元素前，最好先删除子元素的事件
+
+
+        // scrollIntoView() 可以让元素滚动与窗口持平
+        box.scrollIntoView();
+    </script>
+</body>
+</html>
