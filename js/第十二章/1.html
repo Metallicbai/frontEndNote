@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box{
+            width: 100px;
+            height: 100px;
+            background: pink;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+        // 元素可以通过 style 属性访问样式
+        // 但是如果直接获取的话，拿到的是行内样式
+        var box = document.getElementById('box');
+        console.log(box.style.width);
+        // 同时设置的也是行内样式
+        box.style.background = '#ff3600';
+
+        // 如果css属性不符合 js 的变量命名规则，则需要把横杠去点，然后大写首字母，或者用中括号来操作
+
+        // float 是 js 保留字，所以要用 cssFloat 来表示
+
+        // cssText 获取css样式
+        console.log(box.style.cssText)      // background: rgb(255, 54, 0);
+
+        // length 获取在元素上的 css 样式个数
+        console.log(box.style.length)       // 10
+
+        // parentRule css信息的 CSSRule 对象
+        console.log(box.style.parentRule)       // null
+
+        // removeProperty() 删除指定的样式
+        box.style.removeProperty('background')
+
+        // getComputedStyle() 可以获取元素计算后的样式，接收两个参数，第一个是要计算的元素，第二个是对应的伪元素，如果不需要，第二个参数可以不用传
+        console.log(getComputedStyle(box));
+    </script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            top: 200px;
+            left: 200px;
+            border: 5px solid black;
+            
+        }
+        #box{
+            background: green;
+        }
+        #box2{
+            background: red;
+            top: 100px;
+            left: 100px;
+        }
+        #box3{
+            height: 800px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div id="box2"></div>
+    </div>
+    <div id="box3"></div>
+    <script>
+        var box = document.getElementById('box');
+        var box2 = document.getElementById('box2');
+        var box3 = document.getElementById('box3');
+        // offsetTop 元素上面距离父级的距离，在父级元素的边框之内，如果没有父级，就是与 body 的距离
+        console.log(box2.offsetTop)     // 100
+
+        // offsetLeft 元素左边距离父级的距离，在父级的元素的边框内，如果没有父级，就是与 body 的距离
+        console.log(box.offsetLeft)     // 200
+        console.log(box2.offsetLeft)    // 100
+
+        // offsetHeight 获取元素的高度，包括边框
+        console.log(box3.offsetHeight)   // 810
+
+        // offsetWidth 获取元素的宽度，包括边框
+        console.log(box3.offsetWidth)   // 110
+
+        // offsetParent 获得最近有定位的父元素,没有的话就是body,body的是 null 
+        console.log(box.offsetParent)
+        console.log(box2.offsetParent)
+        console.log(document.body.offsetParent)     // null 
+
+        // clientHeight 获取元素的内容高度，不含边框的高度
+        console.log(box3.clientHeight);  // 800
+
+        // clientWidth 获取元素的内容宽度
+        console.log(box3.clientWidth);  // 100
+
+        // 元素的滚动条高度是不计算在内的
+        console.log(document.documentElement.clientHeight)      // 948
+
+
+        // scrollHeight 获取元素被撑开的高度
+        console.log(box3.scrollHeight)      // 800
+        console.log(document.documentElement.scrollHeight)      // 1010
+
+        // scrollWidth 获取元素被撑开的宽度
+        console.log(box3.scrollWidth)       // 100
+
+        // scrollTop 获取元素上边被隐藏的高度，可以获取滚动条的高度
+        console.log(box3.scrollTop)         // 0
+        console.log(document.documentElement.scrollTop)     // 62
+
+        // scrollLeft 获取元素左边被隐藏的宽度,可以获取滚动条的宽度
+        console.log(document.documentElement.scrollLeft);   // 0
+
+        // scrollTop 跟 scrollLeft 都是可以设置的
+
+        // 1秒钟后窗口滚动到顶部
+        setTimeout(function() {
+            document.documentElement.scrollTop = 0;
+        },1000)
+
+
+        // getBoundingClientRect() 可以获取一个对象，分别是 top left right bottom x y
+        // 表示顶部到窗口顶部的距离，左边到窗口左边的距离，右边到窗口左边的距离，下边到窗口上边的距离,x y表示偏移的距离
+        console.log(box2.getBoundingClientRect())
+    </script>
+</body>
+</html>
