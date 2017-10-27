@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box{
+            width: 100px;
+            height: 100px;
+            background: red;
+            border: 2px solid black;
+        }
+        #box2{
+            width: 100px;
+            height: 100px;
+            background: red;
+            border: 2px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <div id="box2"></div>
+    <script>
+        // DOM0 级事件处理程序
+        var box = document.getElementById('box');
+        // 可以通过 on 向元素添加事件
+        box.onclick = function() {
+            console.log(1)
+            // 内部的 this 会指向该 元素
+            console.log(this.id)
+        }
+
+        // 通过 on 添加的事件，处于冒泡阶段执行的
+
+        box.onclick = function() {
+            // 如果再次用 on 添加相同事件，会直接覆盖掉之前的事件
+            console.log(123)
+        }
+
+        box.onclick = null;     // 给事件赋值 null 可以解除事件
+
+
+        // DOM2 级事件
+        var box2 = document.getElementById('box2');
+
+        // 通过 addEventListener() ，接收三个参数，第一个是事件名称，第二个是事件处理函数，第三个是表示要捕获还是冒泡，捕获传 true ，冒泡传 false， 默认是 false
+        box2.addEventListener('click',function() {
+            console.log(2)   
+        },false)
+        // 事件往内捕获到目标事件的时候，会触发目标事件事件流内相同的事件
+        document.body.addEventListener('click',function() {
+            console.log(1)
+        },true)
+
+
+        // DOM2 级添加的事件可以重复添加，不会给覆盖
+        function handle() {
+            console.log(this.id)
+        }
+        box2.addEventListener('click',handle,false);
+
+        // 并且可以通过 removeEventListener() 来移除事件，但是如果第二个参数是匿名函数，是移除不了的
+        box2.removeEventListener('click',function() {           
+            console.log(2)
+        })      
+        // 上面的操作是无效的
+
+        box2.removeEventListener('click',handle);       // 有效
+
+        // 移除的时候，穿进去的参数要跟添加事件的时候一致，所以要注意第二个参数不能是匿名函数，并且注意第三个参数有没有一致
+    </script>
+</body>
+</html>
