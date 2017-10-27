@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            border: 5px solid black;
+            position: absolute;
+            top: 100px;
+            left: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div id="box2"></div>
+    </div>
+    <script>
+        // 事件冒泡，事件会从目标元素上面触发，然后逐级冒泡上去，他的父级都会出发相同的事件
+        var box = document.getElementById('box');
+        var box2 = document.getElementById('box2');
+
+        box.onclick = function() {
+            console.log(1)
+        }
+        box2.onclick = function() {
+            console.log(2)
+        }
+
+        // 会一直冒泡到 window 对象
+        // on 添加的事件都会触发事件冒泡
+
+        // 事件捕获就是会从 document 开始触发事件，一直往内捕获，直到到达目标元素为止（一般浏览器都会从 window 开始捕获，但是标准是从 document）
+
+
+        // DOM 事件流
+        // 事件流包括 事件捕获阶段，目标阶段，冒泡阶段
+        // 事件会从 document 开始往内捕获，这个阶段都称之为捕获阶段
+        // 到达触发事件的元素身上开始触发事件，这个阶段为目标阶段
+        // 最后事件会往外冒泡，一直冒泡到 document ，这个阶段叫 冒泡阶段
+    </script>
+</body>
+</html>
