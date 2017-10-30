@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            height: 2500px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // 滚轮事件
+        // mousewheel ，可以在任何元素上触发，会冒泡
+        document.body.onmousewheel = function(ev) {
+            // wheelDelta 表示滚轮的信息,向上是 120 向下是 -120
+            console.log(ev.wheelDelta)
+        }
+
+        // firefox 的滚轮事件是 DOmMouseScroll ,并且只能通过 addEventListener 添加
+        document.body.addEventListener('DOMMouseScroll',function(ev) {
+            // detail 会显示滚轮的信息,向下是 3 向上是 -3
+            console.log(ev.detail)
+        })
+    </script>
+</body>
+</html>
