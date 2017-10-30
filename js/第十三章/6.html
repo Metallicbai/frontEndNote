@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box{
+            width: 100px;
+            height: 100px;
+            border: 5px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+        var box = document.getElementById('box');
+        // click 用户单击鼠标左键的时候触发
+        box.onclick = function() {
+            console.log(1)
+        }
+
+        // dblclick 鼠标双击的时候触发
+        box.ondblclick = function() {
+            console.log(2)
+        }
+
+        // mousedown 用户点击鼠标的任何按键是触发
+        box.onmousedown = function() {
+            console.log(3)
+        }
+
+        // mouseup 用户释放鼠标的时候触发
+        box.onmouseup = function() {
+            console.log(4)
+        }
+
+        // 鼠标点击触发顺序 mousedown > mouseup > click > dblclick
+        // 如果取消了前置的事件，后置的事件将不会被触发
+
+        // mouseenter 鼠标从外部引导元素内部的时候触发，，这个事件不会冒泡，同时子元素也不会触发这个事件
+        box.onmouseenter = function() {
+            console.log(5)
+        }
+
+        // mouseleave 鼠标移除元素的时候触发，这个事件不会冒泡，并且不会被子元素触发
+        box.onmouseleave = function() {
+            console.log(6)
+        }
+
+        // mouseover 鼠标移入元素时触发，会冒泡，会被子元素触发
+        box.onmouseover = function() {
+            console.log(7)
+        }
+
+        // mouseout 鼠标移出元素的时候触发，会冒泡会被子元素触发
+        box.onmouseout = function() {
+            console.log(8)
+        }
+
+        // mouseover 跟 mouseout 触发的优先级会比 mouseenter 跟 mouseleave 高
+
+    </script>
+</body>
+</html>
