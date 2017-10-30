@@ -25,6 +25,12 @@
             // detail 会显示滚轮的信息,向下是 3 向上是 -3
             console.log(ev.detail)
         })
+
+
+        window.addEventListener('scroll',function() {
+            // 滚动条事件
+            console.log(window.pageXOffset,window.pageYOffset)
+        })
     </script>
 </body>
 </html>
