@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" name="" id="text">
+    <script>
+        var text = document.getElementById('text');
+        // 键盘事件,只有有焦点的元素才能触发键盘事件
+
+        // keydown 用户按下任意键的时候触发，如果一直不放着就重复触发
+        text.onkeydown = function(ev) {
+            console.log(this.value)
+
+            // keyCode 保存按下按键的键码
+            console.log(ev.keyCode)
+        }
+
+        // keyup 当用户释放按键的时候触发
+        text.onkeyup = function() {
+            console.log(1)
+        }
+
+    </script>
+</body>
+</html>
