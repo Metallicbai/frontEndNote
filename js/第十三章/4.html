@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            height: 2000px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // load 事件，表示在加载完成之后执行的事件
+        // window.onload
+        window.onload = function() {
+            // 这里面的代码会在窗口加载完成之后执行
+            console.log(1)
+        }
+
+        // resize 事件，当窗口大小发生改变的时候，都会触发这个事件
+        window.onresize = function() {
+            console.log(2)
+        }
+
+        // scroll 事件,当滚动条滚动的时候触发
+        window.addEventListener('scroll',function() {
+            // 滚动条高度
+            var top = document.documentElement.scrollTop || document.body.scrollTop;
+            console.log(top)
+        })
+    </script>
+</body>
+</html>
