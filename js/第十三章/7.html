@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box{
+            width: 100px;
+            height: 100px;
+            border: 5px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+        var box = document.getElementById('box');
+        box.addEventListener('click',function(ev) {
+
+            // clientX 跟 clientY 可以获取鼠标的坐标位置,相对于左上角来计算的
+            console.log(ev.clientX,ev.clientY)
+
+            // screenX 跟 screenY 可以获取鼠标位置相对于屏幕的位置
+            console.log(ev.screenX,ev.screenY)
+
+            // shiftkey 如果 shift 按键被按下，这个值为 true
+            if (ev.shiftKey) {
+                console.log('点击的时候同时按下了shift')
+            }
+
+            // ctrlkey 如果 ctrl 按键被按下，这个值为 true
+            if (ev.ctrlKey) {
+                console.log('点击的时候同时按下了ctrl')
+            }
+
+            // altkey 如果 alt 按键被按下，这个值为 true
+            if (ev.altKey) {
+                console.log('点击的时候同时按下了alt')
+            }
+
+            // metakey window 下 win 键 mac 下 cmd  按键被按下，这个值为 true
+            if (ev.metakey) {
+                console.log('metakey为true')
+            }
+
+            // detail 表示事件的属性,表示被单击了多少下，如果没有连续点击，将会被重置
+            console.log(ev.detail)
+        })
+    </script>
+</body>
+</html>
