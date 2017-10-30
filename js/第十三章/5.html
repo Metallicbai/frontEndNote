@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="text">
+    <script>
+            var text = document.getElementById('text');
+        // blur 元素失焦的时候触发
+        text.onblur = function() {
+            console.log(1)
+        }
+
+        // focus 元素聚焦的时候触发
+        text.onfocus = function() {
+            console.log(2)
+        }
+
+        // 失焦跟聚焦事件都不会冒泡
+        // 可以通过 js 直接让元素聚焦
+        text.focus()
+    </script>
+</body>
+</html>
